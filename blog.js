@@ -30,7 +30,7 @@ $(document).ready(function()
             $.ajax({
                 url: 'https://ancient-bayou-43826.herokuapp.com/login',
                 type: 'post',
-                contentType: 'application/json;',
+                contentType: 'application/json',
                 dataType: 'json',
                 async: true,
                 data: JSON.stringify(loginData) ,
