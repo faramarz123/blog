@@ -9,6 +9,7 @@ $(document).ready(function () {
     login();
 
 
+
     //Login function to handle form submit and set cookie then, call cloadPosts().
     function login() {
 
@@ -29,7 +30,7 @@ $(document).ready(function () {
             var username = $('#username').val();
             var password = $('#password').val();
             var loginData = { username: username, password: password };
-            
+
 
 
             //HttpPostRequest to post login info.
@@ -77,12 +78,12 @@ $(document).ready(function () {
     }
     //loadPosts function
     function loadPosts() {
-        console.log("This is loadPosts(). and cookie is :",getPostsToken);
+        console.log("This is loadPosts(). and cookie is :", getPostsToken);
         showDOMElement('#posts');
         // console.log(readCookie('token'));
         // var usrIsAuthenticated = readCookie('token');
         // if (usrIsAuthenticated) {
-            console.log(getPostsToken)
+        console.log(getPostsToken);
         $.ajax({
             url: 'https://ancient-bayou-43826.herokuapp.com/posts',
             type: 'GET',
@@ -94,11 +95,27 @@ $(document).ready(function () {
             success: function (posts) {
                 console.log("This is load post success. ");
                 console.log(posts);
-                posts.forEach(function (post) {
-                    $("#ul").append('<li>post: ' + post + '</li>');
-                }, this);
+                $.each(data, function (index, post) {
+                    $("#posts").append("<li>" + post.text + "</span> <button type='button' value='load comments' onclick='loadcomments(" + post.id + ")' />");
+                    // $("#ul").append('<li>post: ' + post + '</li>');
+                });
             }
         });
+    }
+    function loadcomments(post_id)
+    {
+        $.ajax({
+            url: 'https://ancient-bayou-43826.herokuapp.com/comments/:post_id',
+            type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json',
+            success: function(comments)
+            {
+                $
+            }
+
+        });
+    }
 
 
     }
