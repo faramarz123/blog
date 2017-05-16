@@ -3,14 +3,14 @@ $(document).ready(function () {
 
     var getPostsToken;
     //At first hide postsDOMElement
-    hideDOMElement('#posts');
+    // hideDOMElement('#posts');
 
-    //Call login function
+    //Login function to handle form submit and set cookie, then, call LoadPosts().
     login();
 
 
 
-    //Login function to handle form submit and set cookie then, call cloadPosts().
+    //Login body
     function login() {
 
         // console.log("hello from login. ");
@@ -71,6 +71,7 @@ $(document).ready(function () {
     function showDOMElement(domElementName) {
         console.log("This is " + domElementName + "DOM Show(). ");
         $(domElementName).show();
+        
     }
     function hideDOMElement(domElementName) {
         console.log("This is " + domElementName + "DOM Hide(). ");
