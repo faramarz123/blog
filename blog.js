@@ -102,23 +102,21 @@ $(document).ready(function () {
             }
         });
     }
-    function loadcomments(post_id)
-    {
+    function loadcomments(post_id) {
         $.ajax({
             url: 'https://ancient-bayou-43826.herokuapp.com/comments/:post_id',
             type: 'GET',
             dataType: 'json',
             contentType: 'application/json',
-            success: function(comments)
-            {
-                $
+            success: function (comments) {
+                $.each(data, function (commentIndex, comment) {
+                    $("#").append("<p>comment "+commentIndex+" : " + comment.text +"</p>");
+                })
             }
 
         });
     }
 
-
-    }
 
 
 })
