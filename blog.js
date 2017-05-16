@@ -99,6 +99,7 @@ function loadPosts() {
         }
     });
 }
+//Load comments
 function loadcomments(post_id) {
     $.ajax({
         url: 'https://ancient-bayou-43826.herokuapp.com/comments/' + post_id,
