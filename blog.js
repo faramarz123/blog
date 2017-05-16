@@ -55,7 +55,7 @@ function login() {
 
             },
             error: function (xhr, textStatus, errorThrown) {
-                console.log('Hello from erroe function. ');
+                alert('Hello from erroe function. ');
 
             }
         });
@@ -93,7 +93,7 @@ function loadPosts() {
             console.log("This is load post success. ");
             console.log(posts);
             $.each(data, function (index, post) {
-                $("#posts").append("<li>" + post.text + "</span> <button type='button' value='load comments' onclick='loadcomments(" + post.id + ")' />");
+                $("#posts").append("<li><span>" + post.text + "</span> <button type='button' value='load comments' onclick='loadcomments(" + post.id + ")' /></li>");
                 // $("#ul").append('<li>post: ' + post + '</li>');
             });
         }
@@ -108,7 +108,7 @@ function loadcomments(post_id) {
         success: function (comments) {
             // $.each(data, function (commentIndex, comment) {
             comments.forEach(function (element) {
-                $("#").append("<p>comment " + comments.indexOf(element) + " : " + comment.text + "</p>");
+                $("#").append("<p>comment " + comments.indexOf(element) + " : " + element.text + "</p>");
             }, this);
 
         }
