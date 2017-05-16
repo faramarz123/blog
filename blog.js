@@ -1,29 +1,26 @@
 $(document).ready(function () {
 
-    //pageLoad();
-    //$("submit").
-    //call authentication function
-    authentication();
+
+    //call login function
+    hideDOMElement('#posts');
+    // hideDOMElement('#loginform');
+
+    login();
 
 
-    //Pageload
-    function pageLoad() {
-        // authentication();
-    }
 
-    //createcookie function
+    function login() {
 
+        // console.log("hello from login. ");
 
-    function authentication() {
-        //$("submit")
-        console.log("hello from authentication. ");
-
-        //parameters
-
+        // if (readCookie("token")) {
+        //     hideLoginForm();
+        //     loadPosts();
+        // }
         //Login on form submit 
         $('#loginform').submit(function (e) {
             e.preventDefault();
-            console.log("hello from submit");
+            console.log("hello from login submit");
             // e.preventDefault();
 
             //var form = $(this);
@@ -43,18 +40,59 @@ $(document).ready(function () {
                 dataType: 'json',
                 data: JSON.stringify(loginData),
                 success: function (data) {
-                    console.log('hello from success. ');
+                    console.log('This is login success. ');
                     createCookie('token', data.token, 7);
-                    
+                    hideDOMElement("#loginform");
+                    loadPosts();
+                    // console.log("This is loadPosts(). ");
+                    // showDOMElement('#posts');
+                    //var usrIsAuthenticated = readCookie('token');
+                    //if (usrIsAuthenticated) {
+
+
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     console.log('Hello from erroe function. ');
-                    // console.log('error');
+
                 }
             });
             return false;
         });
     }
 
-    
+    function showDOMElement(domElementName) {
+        console.log("This is " + domElementName + "DOM Show(). ");
+        $(domElementName).show();
+    }
+    function hideDOMElement(domElementName) {
+        console.log("This is " + domElementName + "DOM Hide(). ");
+        $(domElementName).hide();
+    }
+    //loadPosts function
+    function loadPosts() {
+        console.log("This is loadPosts(). ");
+        showDOMElement('#posts');
+        //var usrIsAuthenticated = readCookie('token');
+        //if (usrIsAuthenticated) {
+        // $.ajax({
+        //     url: 'https://ancient-bayou-43826.herokuapp.com/posts',
+        //     type: 'GET',
+        //     dataType: 'json',
+        //     contentType: 'application/json',
+        //     success: function (posts) {
+        //         console.log("This is load post success. ");
+        //         console.log(posts);
+        //         // posts.array.forEach(function (post) {
+        //         //     $("#ul").append('<li>post: ' + post + '</li>');
+        //         // }, this);
+        //     }
+        // });
+        $.get("https://ancient-bayou-43826.herokuapp.com/posts", function(data, status){
+            console.log(data);
+            //alert("Data: " + data + "\nStatus: " + status);
+        });
+
+    }
+
+
 })
