@@ -1,14 +1,15 @@
 $(document).ready(function () {
 
 
-    //call login function
+    
+    //At first hide postsDOMElement
     hideDOMElement('#posts');
-    // hideDOMElement('#loginform');
-
+    
+    //Call login function
     login();
 
 
-
+    //Login function to handle form submit and set cookie then, call cloadPosts().
     function login() {
 
         // console.log("hello from login. ");
@@ -17,22 +18,21 @@ $(document).ready(function () {
         //     hideLoginForm();
         //     loadPosts();
         // }
+
         //Login on form submit 
         $('#loginform').submit(function (e) {
             e.preventDefault();
             console.log("hello from login submit");
-            // e.preventDefault();
+            
 
-            //var form = $(this);
-
-            //get username and password
+            //Get username and password
             var username = $('#username').val();
             var password = $('#password').val();
             var loginData = { username: username, password: password };
 
 
 
-            //Httprequest
+            //HttpPostRequest to post login info.
             $.ajax({
                 url: 'https://ancient-bayou-43826.herokuapp.com/login',
                 type: 'POST',
@@ -41,8 +41,14 @@ $(document).ready(function () {
                 data: JSON.stringify(loginData),
                 success: function (data) {
                     console.log('This is login success. ');
+
+                    //Set the got toke to cookie
                     createCookie('token', data.token, 7);
+
+                    //Hide loginDOM before showing the posts
                     hideDOMElement("#loginform");
+                    
+                    //Call loadPosts function to load posts
                     loadPosts();
                     // console.log("This is loadPosts(). ");
                     // showDOMElement('#posts');
