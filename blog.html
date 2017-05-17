@@ -12,17 +12,21 @@
 
     <body>
         <!--<div class="container">-->
+        <!--Blog app header     -->
         <header>
             <h1>Blog header</h1>
         </header>
 
+        <!--navigation bar -->
         <div class="navbar">
             navbar
         </div>
 
-        <div class="loginPanel">
+        <!--We have { loginPanel, postsPanel} panels, corresponding to the target page we want to show-->
+        <!--This is loginPanel-->
+        <div class="login-panel">
 
-            <form id="loginform" method="post" action="#">
+            <form class="login-form" method="post" action="#">
                 <label for="username">Username:</label>
                 <input type="text" name="username" id="username" class="basic">
                 <br>
@@ -33,15 +37,20 @@
             </form>
         </div>
 
-        <div class="postsPanel">
-            This is postspanel.
-            <div class="left">
-                Most visited posts sidebar
-            </div>
+        <div class="posts-panel">
             
-           <ul id="posts">
-
+            <!--<div class="most-visited-posts-sidebar">
+                Most visited posts sidebar
+            </div>-->
+            <nav>
+                پربازدید ها
+            </nav>
+            <article>
+                <h1>بلاگ کاربر</h1>
+                <ul class="posts">
                 </ul>
+            </article>
+
         </div>
         <footer>Blog footer</footer>
         <!--</div>-->

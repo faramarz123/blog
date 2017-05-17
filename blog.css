@@ -3,21 +3,32 @@
     text-align: center;
     background-color: gainsboro;
 }
-.loginPanel
+article {
+    margin-left: 170px;
+    border-left: 1px solid gray;
+    padding: 1em;
+    overflow: hidden;
+}
+nav {
+    float: left;
+    max-width: 160px;
+    margin: 0;
+    padding: 1em;
+}
+h1
+{
+    text-align: center; 
+}
+.login-panel 
 {
     display: none;
 }
-#loginform
-{
-    /*display: none;*/
-}
-.postsPanel
+.posts-panel
 {
     display: none;
 }
-#posts
-{
-    
+.posts{
+    direction: rtl
 }
 .top {
     width: 100%;
@@ -25,7 +36,7 @@
     background-color: dimgray;
     text-align: center;
 }
-.left {
+.most-visited-posts-sidebar {
     width: 178px;
     height: 20%;
     float:left;
