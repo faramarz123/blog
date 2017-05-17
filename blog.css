@@ -55,4 +55,8 @@ h1
     clear: left;
     text-align: center;
 }
+ul li
+{
+    margin-top: 10px;
+}
  

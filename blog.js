@@ -14,6 +14,16 @@ function pageLoad() {
     if (readCookie('token')) {
         $('.posts-panel').show();
         // showDOMElement("#posts");
+
+        // var postsDOM = 
+        // $('<button/>', {
+        //     text: 'کامنت ',
+        //     onClick: function () {
+        //         console.log("hello");
+        //         //loadcomments(post_id);
+        //     }
+        // }).appendTo(postsDOM);
+        // console.log("hello");
         loadPosts();
     }
     else {
@@ -95,31 +105,36 @@ function loadPosts() {
         headers: {
             'token': readCookie('token')
         },
-        success: function (Posts) {
+        success: function (posts) {
 
             console.log("This is load post success. ");
 
-            console.log("Posts are loaded. ");
+
             var postsDOM = $(".posts");
 
-            var myposts = Posts.posts;
+            var myPosts = posts.posts;
 
 
 
-            myposts.forEach(function (post) {
-                // var li = document.createElement("LI");
-                var liText = myposts.indexOf(post) + ". " + post.title + " : " + post.content;
-                $('<li/>', { 'text': liText }).appendTo(postsDOM);
+            myPosts.forEach(function (post) {
+                // console.log(post)
+                var li = document.createElement("LI");
+                var liText = myPosts.indexOf(post) + ". " + post.title + " : " + post.content;
+                // $("<li/>", { "text": liText }).appendTo(postsDOM);
+                $("<p>" + liText + "'</p>").appendTo(postsDOM);
 
-                var post_id = post.id;
-                $('<button/>', {
-                    text: 'کامنت ',
-                    click: function (post_id) {
-                        //loadcomments(post_id);
-                    }
-                }).appendTo(postsDOM, $('<br/>'));
+                var postId = post.id;
+                $("<button text='کامنت' onclick='loadcomments(" + post.id + ")' /></button> <hr/>").appendTo(postsDOM);
+                // var commentBtn = $("button");
+                // commentBtn.on('click',function()
+                // {
+                //     console.log("commentBtn. ");
+                // });
+                // postsDOM.append($('button').text('asuidhkas'));
+                // commentBtn.appendTo(postsDOM);
+
                 // postsDOM.append("<li><span>" + post.content + "</span> <button type='button' value='load comments' onclick='loadcomments(" + post.id + ")' /></li>");
-
+                console.log("Posts are loaded. ");
             });
             // var mostVisitedPosts = myposts.filter()
             // console.log("posts are appended to DOM. ");
@@ -129,6 +144,7 @@ function loadPosts() {
 }
 //Load comments
 function loadcomments(post_id) {
+    console.log("This is loadComments. ");
     $.ajax({
         url: 'https://ancient-bayou-43826.herokuapp.com/comments/' + post_id,
         type: 'GET',
@@ -137,11 +153,29 @@ function loadcomments(post_id) {
         headers: {
             'token': readCookie('token')
         },
-        success: function (comments) {
+        success: function (commentsObject) {
+            var commentsArray = commentsObject.comments;
+            // console.log(commentsArray);
+            // var arr2 = commentsArray.comments;
+            // console.log(arr2)
+
+            commentsArray.forEach(function (comment) {
+
+                var arr = comment.comments;
+                // console.log(arr);
+
+                arr.forEach(function (comment2) {
+                    console.log(comment2);
+                })
+
+            })
+            // comments.forEach(function (comment) {
+            // console.log("comment")
+            // });
             // $.each(data, function (commentIndex, comment) {
-            comments.forEach(function (element) {
-                $("#").append("<p>comment " + comments.indexOf(element) + " : " + element.text + "</p>");
-            }, this);
+            // comments.forEach(function (element) {
+            //     $("#").append("<p>comment " + comments.indexOf(element) + " : " + element.text + "</p>");
+            // }, this);
 
         }
     });
