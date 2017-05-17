@@ -11,22 +11,40 @@
     </head>
 
     <body>
-        <form id="loginform" method="post" action="#">
-            <label for="username">Username:</label>
-            <input type="text" name="username" id="username" class="basic">
-            <br>
-            <label for="password">Password:</label>
-            <input type="text" name="password" id="password" class="basic">
+        <!--<div class="container">-->
+        <header>
+            <h1>Blog header</h1>
+        </header>
 
-            <input type="submit" name="submit" class="button" value="Login">
-        </form>
-
-        <div>
-
-            <ul id="posts"></ul>
-
+        <div class="navbar">
+            navbar
         </div>
 
+        <div class="loginPanel">
+
+            <form id="loginform" method="post" action="#">
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username" class="basic">
+                <br>
+                <label for="password">Password:</label>
+                <input type="text" name="password" id="password" class="basic">
+
+                <input type="submit" name="submit" class="button" value="Login">
+            </form>
+        </div>
+
+        <div class="postsPanel">
+            This is postspanel.
+            <div class="left">
+                Most visited posts sidebar
+            </div>
+            
+           <ul id="posts">
+
+                </ul>
+        </div>
+        <footer>Blog footer</footer>
+        <!--</div>-->
     </body>
 
     </html>

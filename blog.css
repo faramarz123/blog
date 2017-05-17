@@ -1,13 +1,47 @@
-form {
-
+.navbar
+{
+    text-align: center;
+    background-color: gainsboro;
 }
-
+.loginPanel
+{
+    display: none;
+}
 #loginform
 {
-    display: none;
+    /*display: none;*/
 }
-
-#posts
+.postsPanel
 {
     display: none;
 }
+#posts
+{
+    
+}
+.top {
+    width: 100%;
+    height: 22px;
+    background-color: dimgray;
+    text-align: center;
+}
+.left {
+    width: 178px;
+    height: 20%;
+    float:left;
+    background-color:silver;
+}
+.main {
+    float: left;
+    height: 20%;
+   
+    background-color: lightsteelblue;
+ }
+ header, footer {
+    padding: 1em;
+    color: white;
+    background-color: grey;
+    clear: left;
+    text-align: center;
+}
+ 
