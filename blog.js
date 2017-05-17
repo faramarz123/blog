@@ -98,26 +98,27 @@ function loadPosts() {
         success: function (Posts) {
 
             console.log("This is load post success. ");
-            // var posts1 = posts.split("");
-            console.log(Posts.posts, " error is :", Posts.error);
+            
             console.log("Posts are loaded. ");
             var postsDOM = $(".posts");
-            //var myposts = [];
+           
             var myposts = Posts.posts;
-            console.log(myposts[0].content);
+            
 
-            // console.log("Myposts length is : ", myposts.length);
+          
             myposts.forEach(function (post) {
-                var li = document.createElement("LI");
-                
-                var liText = document.createTextNode("پست شماره : "+" ( "+myposts.indexOf(post)+" ) "+ post.content);
-                li.appendChild(liText);
-                postsDOM.append(li);
+                // var li = document.createElement("LI");
+                var litext = "پست شماره : "+" ( "+myposts.indexOf(post)+" ) "+ post.content;
+                $('<li/>',{'text': litext}).appendTo(postsDOM);
+                // var liText = document.createTextNode("پست شماره : "+" ( "+myposts.indexOf(post)+" ) "+ post.content);
+                // li.appendChild(liText);
+                // postsDOM.append(li);
 
                 // postsDOM.append("<li><span>" + post.content + "</span> <button type='button' value='load comments' onclick='loadcomments(" + post.id + ")' /></li>");
                 
             });
-            console.log("posts are appended to DOM. ");
+            // var mostVisitedPosts = myposts.filter()
+            // console.log("posts are appended to DOM. ");
             
         }
     });
