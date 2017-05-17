@@ -120,11 +120,12 @@ function loadPosts() {
                 // console.log(post)
                 var li = document.createElement("LI");
                 var liText = myPosts.indexOf(post) + ". " + post.title + " : " + post.content;
-                // $("<li/>", { "text": liText }).appendTo(postsDOM);
-                $("<p>" + liText + "'</p>").appendTo(postsDOM);
-
                 var postId = post.id;
-                $("<button text='کامنت' onclick='loadcomments(" + post.id + ")' /></button> <hr/>").appendTo(postsDOM);
+                // $("<li/>", { "text": liText }).appendTo(postsDOM);
+                $("<li><span>" + liText + "</span> <button text='کامنت' onclick='loadcomments(" + post.id + ")' >کامنت</button> </li><hr/>").appendTo(postsDOM);
+
+                
+                // $("<button text='کامنت' onclick='loadcomments(" + post.id + ")' /></button> <hr/>").appendTo(postsDOM);
                 // var commentBtn = $("button");
                 // commentBtn.on('click',function()
                 // {
