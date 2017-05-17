@@ -98,28 +98,32 @@ function loadPosts() {
         success: function (Posts) {
 
             console.log("This is load post success. ");
-            
+
             console.log("Posts are loaded. ");
             var postsDOM = $(".posts");
-           
-            var myposts = Posts.posts;
-            
 
-          
+            var myposts = Posts.posts;
+
+
+
             myposts.forEach(function (post) {
                 // var li = document.createElement("LI");
-                var litext = "پست شماره : "+" ( "+myposts.indexOf(post)+" ) "+ post.content;
-                $('<li/>',{'text': litext}).appendTo(postsDOM);
-                // var liText = document.createTextNode("پست شماره : "+" ( "+myposts.indexOf(post)+" ) "+ post.content);
-                // li.appendChild(liText);
-                // postsDOM.append(li);
+                var liText = myposts.indexOf(post) + ". " + post.title + " : " + post.content;
+                $('<li/>', { 'text': liText }).appendTo(postsDOM);
 
+                var post_id = post.id;
+                $('<button/>', {
+                    text: 'کامنت ',
+                    click: function (post_id) {
+                        //loadcomments(post_id);
+                    }
+                }).appendTo(postsDOM, $('<br/>'));
                 // postsDOM.append("<li><span>" + post.content + "</span> <button type='button' value='load comments' onclick='loadcomments(" + post.id + ")' /></li>");
-                
+
             });
             // var mostVisitedPosts = myposts.filter()
             // console.log("posts are appended to DOM. ");
-            
+
         }
     });
 }
@@ -130,6 +134,9 @@ function loadcomments(post_id) {
         type: 'GET',
         dataType: 'json',
         contentType: 'application/json',
+        headers: {
+            'token': readCookie('token')
+        },
         success: function (comments) {
             // $.each(data, function (commentIndex, comment) {
             comments.forEach(function (element) {
