@@ -115,8 +115,8 @@ function loadPosts() {
 }
 //Load comments
 function loadcomments(post_id) {
-    var commentList = $('#commentList-' + post_id);
-    console.log('COMMENTLIST IS : ', commentList);
+    // var commentList = $('#commentList-' + post_id);
+    // console.log('CommentList is : ', commentList);
     commentList.empty();
 
     console.log("This is loadComments. ");
