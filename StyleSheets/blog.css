@@ -28,7 +28,7 @@
 .sideBar
 {
     direction: rtl;
-    width: 150px;
+    width: 25%;
     /*height: 30px;*/
     /*background-color: green;*/
     float: left;
@@ -44,7 +44,7 @@
     width: 75%;
     float: left;
     /*background-color: red;*/
-    margin-left: 55px;
+    /*margin-left: 55px;*/
 }
 .rightSidebar
 {
