@@ -1,4 +1,5 @@
 .header, .footer {
+    text-align: center;
     direction: rtl;
     background-color: grey;
     color: white;
@@ -29,7 +30,7 @@
     direction: rtl;
     width: 150px;
     /*height: 30px;*/
-    background-color: green;
+    /*background-color: green;*/
     float: left;
     height: 100%;
 }

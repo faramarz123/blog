@@ -91,8 +91,10 @@ function loadPosts() {
             var mostvisiteds = myPosts.sort(function (a, b) {
                 return b.visits - a.visits;
             }).slice(0, 5);
+            var mostvisitedposts = $('.mostVisited');
             mostvisiteds.forEach(function (post) {
-                console.log(post.visits);
+                $("<li> "+ post.title +"<span>"+"( "+ post.visits+" )"+"</span> </li>").appendTo(mostvisitedposts);
+                // console.log(post.title+' : '+post.visits);
             });
 
             //Set most visited elements to the sidebar
@@ -100,7 +102,7 @@ function loadPosts() {
 
             myPosts.forEach(function (post) {
                 // console.log(post)
-                var li = document.createElement("LI");
+                // var li = document.createElement("LI");
                 var liText = "پست " + post.id + "با عنوان: " + post.title + " : " + "<br/>" + post.content;
                 var postId = post.id;
                 // $("<li/>", { "text": liText }).appendTo(postsDOM);
