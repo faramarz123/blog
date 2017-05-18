@@ -88,15 +88,15 @@ function loadPosts() {
             myPosts.forEach(function (post) {
                 // console.log(post)
                 // var li = document.createElement("LI");
-                var liText = "پست " + post.id + "با عنوان: " + post.title + " : " + "<br/>" + post.content;
-                var postId = post.id;
+                // var liText = ;
+                
                 // $("<li/>", { "text": liText }).appendTo(postsDOM);
-                $("<li><span>" + liText + "</span> <button text='کامنت ها' onclick='loadcomments(" + post.id + ")' >کامنت</button> </li> <div class='postComments'><ul class='commentList'  id='commentList-" + post.id + "' ></ul></div><hr/>").appendTo(postsList);
+                $("<li><div class='postSpan'>" + "پست " + post.id + ": </br>" + post.title + " : </div>" + "<br/>" + post.content+"</br>" + " <button text='کامنت ها' onclick='loadcomments(" + post.id + ")' >کامنت</button> </li> <div class='postComments'><ul class='commentList'  id='commentList-" + post.id + "' ></ul></div><hr/>").appendTo(postsList);
 
                 console.log("Posts are loaded. ");
             });
-            //Get Most Visited posts
 
+            //Get Most Visited posts
             //Sort Posts By Visits Property
             var mostvisiteds = myPosts.sort(function (a, b) {
                 return b.visits - a.visits;
