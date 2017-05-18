@@ -2,32 +2,18 @@ $(document).ready(function () {
 
     //PageLoad function()
     pageLoad();
-    // if (eraseCookie('token1')) {
-        // console.log("token1 is erased. ");
-    // }
 });
 
 //
 function pageLoad() {
-    // eraseCookie('token');
+    
     //Is there a authenticated user or not
     if (readCookie('token')) {
         $('.posts-panel').show();
-
-        // var postsDOM = 
-        // $('<button/>', {
-        //     text: 'کامنت ',
-        //     onClick: function () {
-        //         console.log("hello");
-        //         //loadcomments(post_id);
-        //     }
-        // }).appendTo(postsDOM);
-        // console.log("hello");
         loadPosts();
     }
     else {
         $('.login-panel').show();
-        // showDOMElement("#loginform");
         //Login function to handle form submit and set cookie, then, call LoadPosts().
         // login();
     }
@@ -46,7 +32,6 @@ function login() {
         var password = $('#password').val();
         var loginData = { username: username, password: password };
 
-
         //HttpPostRequest to post login info.
         $.ajax({
             url: 'https://ancient-bayou-43826.herokuapp.com/login',
@@ -55,18 +40,11 @@ function login() {
             dataType: 'json',
             data: JSON.stringify(loginData),
             success: function (data) {
-                // console.log('This is login success. And, token.data is : ',data.token);
-                // getPostsToken = data.token;
-
                 //Set the got toke to cookie
                 createCookie('token', data.token, 10);
-                // readCookie('token');
-                // eraseCookie('token');
-
                 //Call loadPosts function to load posts
                 loadPosts();
                 // console.log("This is loadPosts(). ");
-
             },
             error: function (xhr, textStatus, errorThrown) {
                 alert('Hello from erroe function. ');
@@ -93,9 +71,6 @@ function hideDOMElement(domElementName) {
 function loadPosts() {
 
     console.log("This is loadPosts(). and cookie is :", readCookie('token'));
-    // showDOMElement('#posts');
-    // console.log(readCookie('token'));
-    // console.log(getPostsToken);
     $.ajax({
         url: 'https://ancient-bayou-43826.herokuapp.com/posts',
         type: 'GET',
@@ -105,26 +80,18 @@ function loadPosts() {
             'token': readCookie('token')
         },
         success: function (posts) {
-
             console.log("This is load post success. "); //,posts);
-
-
             var postsList = $(".postsList");
-
             var myPosts = posts.posts;
-
-
-
             myPosts.forEach(function (post) {
                 // console.log(post)
                 var li = document.createElement("LI");
-                var liText = myPosts.indexOf(post) + ". " + post.title + " : " + post.content;
+                var liText = "پست "+post.id + "با عنوان: " + post.title +" : " +"<br/>"+ post.content;
                 var postId = post.id;
                 // $("<li/>", { "text": liText }).appendTo(postsDOM);
-                $("<li><span>" + liText + "</span> <button text='کامنت' onclick='loadcomments(" + post.id + ")' >کامنت</button> </li> <div class='postComments'><ul class='commentList'></ul></div><hr/>").appendTo(postsList);
-
+                $("<li><span>" + liText + "</span> <button text='کامنت ها' onclick='loadcomments(" + post.id + ")' >کامنت</button> </li> <div class='postComments'><ul class='commentList'></ul></div><hr/>").appendTo(postsList);
+                // $("p" + liText + "<button text='کامنت ها' onclick='loadcomments(" + post.id + ")' >کامنت</button></p> <div class='postComments'><ul class='commentList'></ul></div><hr/>").appendTo(postsList);
                 
-
                 console.log("Posts are loaded. ");
             });
         }
@@ -144,30 +111,14 @@ function loadcomments(post_id) {
         },
         success: function (commentsObject) {
             var commentsArray = commentsObject.comments;
-            // console.log(commentsArray);
-            // var arr2 = commentsArray.comments;
-            // console.log(arr2)
-
             commentsArray.forEach(function (comment) {
-
                 var arr = comment.comments;
                 // console.log(arr);
-
                 arr.forEach(function (comment2) {
                     console.log(comment2);
-
-                    $('<li>'+comment2+'</li>').appendTo(commentList);
+                    $('<p> کامنت '+arr.indexOf(comment2) +' :'+ comment2 + '</p>').appendTo(commentList);
                 })
-
             })
-            // comments.forEach(function (comment) {
-            // console.log("comment")
-            // });
-            // $.each(data, function (commentIndex, comment) {
-            // comments.forEach(function (element) {
-            //     $("#").append("<p>comment " + comments.indexOf(element) + " : " + element.text + "</p>");
-            // }, this);
-
         }
     });
 }
