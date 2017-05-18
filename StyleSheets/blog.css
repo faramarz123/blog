@@ -5,6 +5,10 @@
     color: white;
     padding: 15px;
 }
+h2
+{
+    text-align: center;
+}
 .login-panel
 {
     display: none;
