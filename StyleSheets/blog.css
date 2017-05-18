@@ -1,0 +1,14 @@
+/*// html class names correction
+
+
+
+console.log("This is load post success. ");
+            // var posts1 = posts.split("");
+            console.log(Posts.posts, " error is :", Posts.error);
+            console.log("Posts are loaded. ");
+            var myposts = [];
+            myposts = Posts.posts;
+
+            myposts.forEach(function (post) {
+                console.log(post.content)
+            });*/
