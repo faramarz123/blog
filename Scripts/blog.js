@@ -89,7 +89,7 @@ function loadPosts() {
                 var liText = "پست "+post.id + "با عنوان: " + post.title +" : " +"<br/>"+ post.content;
                 var postId = post.id;
                 // $("<li/>", { "text": liText }).appendTo(postsDOM);
-                $("<li><span>" + liText + "</span> <button text='کامنت ها' onclick='loadcomments(" + post.id + ")' >کامنت</button> </li> <div class='postComments'><ul class='commentList'></ul></div><hr/>").appendTo(postsList);
+                $("<li><span>" + liText + "</span> <button text='کامنت ها' onclick='loadcomments(" + post.id + ")' >کامنت</button> </li> <div class='postComments'><ul class='commentList'  id='commentList-"+post.id+"' ></ul></div><hr/>").appendTo(postsList);
                 // $("p" + liText + "<button text='کامنت ها' onclick='loadcomments(" + post.id + ")' >کامنت</button></p> <div class='postComments'><ul class='commentList'></ul></div><hr/>").appendTo(postsList);
                 
                 console.log("Posts are loaded. ");
@@ -99,25 +99,27 @@ function loadPosts() {
 }
 //Load comments
 function loadcomments(post_id) {
-    var commentList = $('.commentList');
+    var commentList = $('#commentList-'+post_id);
+    commentList.empty();
+    $
     console.log("This is loadComments. ");
     $.ajax({
         url: 'https://ancient-bayou-43826.herokuapp.com/comments/' + post_id,
         type: 'GET',
         dataType: 'json',
         contentType: 'application/json',
-        headers: {
-            'token': readCookie('token')
-        },
+        
         success: function (commentsObject) {
             var commentsArray = commentsObject.comments;
+            
             commentsArray.forEach(function (comment) {
-                var arr = comment.comments;
-                // console.log(arr);
-                arr.forEach(function (comment2) {
-                    console.log(comment2);
-                    $('<p> کامنت '+arr.indexOf(comment2) +' :'+ comment2 + '</p>').appendTo(commentList);
-                })
+                console.log(comment)
+                 
+                var arr = comment.comments; 
+                arr.forEach(function (key,comment2) {  
+                    $('<li > کامنت '+comment2 +' :'+ key + '</li>').appendTo(commentList);
+                });
+                
             })
         }
     });
