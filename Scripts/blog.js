@@ -2,9 +2,9 @@ $(document).ready(function () {
 
     //PageLoad function()
     pageLoad();
-    if (eraseCookie('token1')) {
-        console.log("token1 is erased. ");
-    }
+    // if (eraseCookie('token1')) {
+        // console.log("token1 is erased. ");
+    // }
 });
 
 //
@@ -13,7 +13,6 @@ function pageLoad() {
     //Is there a authenticated user or not
     if (readCookie('token')) {
         $('.posts-panel').show();
-        // showDOMElement("#posts");
 
         // var postsDOM = 
         // $('<button/>', {
@@ -27,7 +26,7 @@ function pageLoad() {
         loadPosts();
     }
     else {
-        $('#login-panel').show();
+        $('.login-panel').show();
         // showDOMElement("#loginform");
         //Login function to handle form submit and set cookie, then, call LoadPosts().
         // login();
@@ -38,7 +37,7 @@ function pageLoad() {
 function login() {
 
     //Login on form submit 
-    $('#login-form').submit(function (e) {
+    $('.login-form').submit(function (e) {
         e.preventDefault();
         console.log("hello from login submit");
 
@@ -107,10 +106,10 @@ function loadPosts() {
         },
         success: function (posts) {
 
-            console.log("This is load post success. ");
+            console.log("This is load post success. "); //,posts);
 
 
-            var postsDOM = $(".posts");
+            var postsList = $(".postsList");
 
             var myPosts = posts.posts;
 
@@ -122,29 +121,18 @@ function loadPosts() {
                 var liText = myPosts.indexOf(post) + ". " + post.title + " : " + post.content;
                 var postId = post.id;
                 // $("<li/>", { "text": liText }).appendTo(postsDOM);
-                $("<li><span>" + liText + "</span> <button text='کامنت' onclick='loadcomments(" + post.id + ")' >کامنت</button> </li><hr/>").appendTo(postsDOM);
+                $("<li><span>" + liText + "</span> <button text='کامنت' onclick='loadcomments(" + post.id + ")' >کامنت</button> </li> <div class='postComments'><ul class='commentList'></ul></div><hr/>").appendTo(postsList);
 
                 
-                // $("<button text='کامنت' onclick='loadcomments(" + post.id + ")' /></button> <hr/>").appendTo(postsDOM);
-                // var commentBtn = $("button");
-                // commentBtn.on('click',function()
-                // {
-                //     console.log("commentBtn. ");
-                // });
-                // postsDOM.append($('button').text('asuidhkas'));
-                // commentBtn.appendTo(postsDOM);
 
-                // postsDOM.append("<li><span>" + post.content + "</span> <button type='button' value='load comments' onclick='loadcomments(" + post.id + ")' /></li>");
                 console.log("Posts are loaded. ");
             });
-            // var mostVisitedPosts = myposts.filter()
-            // console.log("posts are appended to DOM. ");
-
         }
     });
 }
 //Load comments
 function loadcomments(post_id) {
+    var commentList = $('.commentList');
     console.log("This is loadComments. ");
     $.ajax({
         url: 'https://ancient-bayou-43826.herokuapp.com/comments/' + post_id,
@@ -167,6 +155,8 @@ function loadcomments(post_id) {
 
                 arr.forEach(function (comment2) {
                     console.log(comment2);
+
+                    $('<li>'+comment2+'</li>').appendTo(commentList);
                 })
 
             })

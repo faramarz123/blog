@@ -1,14 +1,54 @@
-/*// html class names correction
+.header, .footer {
+    background-color: grey;
+    color: white;
+    padding: 15px;
+}
+.login-panel
+{
+    display: none;
+}
+.posts-panel
+{
+    display: none;
+    background-color: aqua;
+    float: left;
+    /*padding: 15px;*/
+    width: 100%
+}
+.postsList
+{
+    direction: rtl;
+}
+.ul
+{
+    border: 3px solid #73AD21;
+}
+.sideBar
+{
+    direction: rtl;
+    width: 150px;
+    /*height: 30px;*/
+    background-color: green;
+    float: left;
+    height: 100%;
+}
+.clearfix::after {
+    content: "";
+    /*clear: both;*/
+    display: table;
+}
+.postList{
+    direction: rtl;
+    width: 75%;
+    float: left;
+    /*background-color: red;*/
+    margin-left: 55px;
+}
+.rightSidebar
+{
+    width: 25%;
+    float: right;
+    background-color: yellow;
+}
 
-
-
-console.log("This is load post success. ");
-            // var posts1 = posts.split("");
-            console.log(Posts.posts, " error is :", Posts.error);
-            console.log("Posts are loaded. ");
-            var myposts = [];
-            myposts = Posts.posts;
-
-            myposts.forEach(function (post) {
-                console.log(post.content)
-            });*/
+/*/kjh*/
