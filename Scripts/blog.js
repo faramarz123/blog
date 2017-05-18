@@ -4,7 +4,7 @@ $(document).ready(function () {
     pageLoad();
 });
 
-//
+//Page load 
 function pageLoad() {
 
     //Is there a authenticated user or not
@@ -69,7 +69,6 @@ function hideDOMElement(domElementName) {
 
 //Loads the posts of the user
 function loadPosts() {
-    var moste
     console.log("This is loadPosts(). and cookie is :", readCookie('token'));
     $.ajax({
         url: 'https://ancient-bayou-43826.herokuapp.com/posts',
@@ -79,19 +78,25 @@ function loadPosts() {
         headers: {
             'token': readCookie('token')
         },
-        success: function (Allposts) {
-            console.log(Allposts);
-            
-            console.log("This is load post success. "); //,posts);
+        success: function (allPosts) {
+            console.log(allPosts);
+
+            console.log("This is load post success. ");
             var postsList = $(".postsList");
-            var myPosts = Allposts.posts;
-             
+            var myPosts = allPosts.posts;
+
+            //Get Most Visited posts
+
+            //Sort Posts By Visits Property
             var mostvisiteds = myPosts.sort(function (a, b) {
                 return b.visits - a.visits;
-            }).slice( 0, 5 );
+            }).slice(0, 5);
             mostvisiteds.forEach(function (post) {
                 console.log(post.visits);
             });
+
+            //Set most visited elements to the sidebar
+
 
             myPosts.forEach(function (post) {
                 // console.log(post)
@@ -100,7 +105,7 @@ function loadPosts() {
                 var postId = post.id;
                 // $("<li/>", { "text": liText }).appendTo(postsDOM);
                 $("<li><span>" + liText + "</span> <button text='کامنت ها' onclick='loadcomments(" + post.id + ")' >کامنت</button> </li> <div class='postComments'><ul class='commentList'  id='commentList-" + post.id + "' ></ul></div><hr/>").appendTo(postsList);
-            
+
                 console.log("Posts are loaded. ");
             });
         }
@@ -109,25 +114,34 @@ function loadPosts() {
 //Load comments
 function loadcomments(post_id) {
     var commentList = $('#commentList-' + post_id);
+    console.log('COMMENTLIST IS : ', commentList);
     commentList.empty();
-    $
+
     console.log("This is loadComments. ");
     $.ajax({
         url: 'https://ancient-bayou-43826.herokuapp.com/comments/' + post_id,
         type: 'GET',
         dataType: 'json',
         contentType: 'application/json',
-
-        success: function (commentsObject) {
-            var commentsArray = commentsObject.comments;
-
+        headers: {
+            'token': readCookie('token')
+        },
+        success: function (allComments) {
+            var commentsArray = allComments.comments;
+            console.log("Comments success. And ", commentsArray);
             commentsArray.forEach(function (comment) {
-                console.log(comment)
+                // console.log('comments are: ',comment)
 
                 var arr = comment.comments;
-                arr.forEach(function (key, comment2) {
-                    $('<li > کامنت ' + comment2 + ' :' + key + '</li>').appendTo(commentList);
-                });
+                if (arr != null) {
+                    arr.forEach(function (key, comment2) {
+                        $('<li > کامنت ' + comment2 + ' :' + key + '</li>').appendTo(commentList);
+                    });
+                }
+                else
+                {
+                    $('<li> هیچ کامنتی موجود نمی باشد. </li>').appendTo(commentList);
+                }
 
             })
         }
