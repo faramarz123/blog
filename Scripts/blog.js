@@ -85,6 +85,16 @@ function loadPosts() {
             var postsList = $(".postsList");
             var myPosts = allPosts.posts;
 
+            myPosts.forEach(function (post) {
+                // console.log(post)
+                // var li = document.createElement("LI");
+                var liText = "پست " + post.id + "با عنوان: " + post.title + " : " + "<br/>" + post.content;
+                var postId = post.id;
+                // $("<li/>", { "text": liText }).appendTo(postsDOM);
+                $("<li><span>" + liText + "</span> <button text='کامنت ها' onclick='loadcomments(" + post.id + ")' >کامنت</button> </li> <div class='postComments'><ul class='commentList'  id='commentList-" + post.id + "' ></ul></div><hr/>").appendTo(postsList);
+
+                console.log("Posts are loaded. ");
+            });
             //Get Most Visited posts
 
             //Sort Posts By Visits Property
@@ -100,16 +110,7 @@ function loadPosts() {
             //Set most visited elements to the sidebar
 
 
-            myPosts.forEach(function (post) {
-                // console.log(post)
-                // var li = document.createElement("LI");
-                var liText = "پست " + post.id + "با عنوان: " + post.title + " : " + "<br/>" + post.content;
-                var postId = post.id;
-                // $("<li/>", { "text": liText }).appendTo(postsDOM);
-                $("<li><span>" + liText + "</span> <button text='کامنت ها' onclick='loadcomments(" + post.id + ")' >کامنت</button> </li> <div class='postComments'><ul class='commentList'  id='commentList-" + post.id + "' ></ul></div><hr/>").appendTo(postsList);
-
-                console.log("Posts are loaded. ");
-            });
+            
         }
     });
 }

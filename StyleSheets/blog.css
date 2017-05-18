@@ -11,6 +11,7 @@
 }
 .posts-panel
 {
+    /*border: 3px solid black;*/
     display: none;
     background-color: darkgrey;
     float: left;
@@ -19,14 +20,12 @@
 }
 .postsList
 {
+    border: 2px solid black;
     direction: rtl;
-}
-.ul
-{
-    border: 3px solid #73AD21;
 }
 .sideBar
 {
+    border: 2px solid black;
     direction: rtl;
     width: 25%;
     /*height: 30px;*/
@@ -34,30 +33,18 @@
     float: left;
     height: 100%;
 }
-.clearfix::after {
-    content: "";
-    /*clear: both;*/
-    display: table;
-}
 .postList{
+    /*padding: 3px 3px 3px 3px;*/
     direction: rtl;
-    width: 75%;
-    float: left;
+    width: 70%;
+    float: right;
     /*background-color: red;*/
     /*margin-left: 55px;*/
 }
-.rightSidebar
-{
-    width: 25%;
-    float: right;
-    background-color: yellow;
-}
+
 .commentList li
 {
     direction: rtl;
     color: red;
 }
-/*/kjh*/
-.postComments{
-    direction: rtl;
-}
+
