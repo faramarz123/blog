@@ -33,8 +33,7 @@ p{
     width: 100%
 }
 .postsList
-{
-   border: 2px solid darkgoldenrod;
+{ 
     direction: rtl;
 }
 .postsList > li{
@@ -45,8 +44,7 @@ padding-bottom: 10px;
 }
 .sideBar
 {
-    margin-top: 30px;
-   border: 2px solid darkgoldenrod;
+    margin-top: 30px; 
     direction: rtl; 
     /*height: 30px;*/
     /*background-color: green;*/
@@ -74,3 +72,12 @@ padding-bottom: 10px;
      padding-bottom: 20px;
  }
 
+.panel{
+    margin-top: 20px;
+}
+.panel-heading{
+    text-align: center;
+}
+ul li{
+    direction: rtl;
+}
