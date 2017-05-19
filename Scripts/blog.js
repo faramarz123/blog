@@ -64,19 +64,26 @@ function hideDOMElement(domElementName) {
     $(domElementName).hide();
 }
 
-//Loads the posts of the user
-function loadPosts() {
-    console.log("This is loadPosts(). and cookie is :", readCookie('token'));
+
+//getRequest()
+function getRequest(url,type,dataType,contentType,sucses1)
+{
     $.ajax({
-        url: 'https://ancient-bayou-43826.herokuapp.com/posts',
-        type: 'GET',
-        dataType: 'json',
+        url: url,
+        type: type,
+        dataType: dataType,
         async:false, //....
-        contentType: 'application/json',
+        contentType: contentType,
         headers: {
             'token': readCookie('token')
         },
-        success: function (allPosts) {
+        success: sucses1
+    });
+}
+//Loads the posts of the user
+function loadPosts() {
+    console.log("This is loadPosts(). and cookie is :", readCookie('token'));
+     var sucses = function(allPosts) {
             console.log(allPosts);
 
             console.log("This is load post success. ");
@@ -92,13 +99,13 @@ function loadPosts() {
                 console.log("Posts are loaded. ");
             }); 
             //Get Most Visited posts
-            //Sort Posts By Visits Property
+            //Sort(a Higher-Order Function) Posts  in descending order by visits property then slice first 5 elements
             var mostvisiteds = myPosts.sort(function (a, b) {
                 return b.visits - a.visits;
             }).slice(0, 5);
             var mostvisitedposts = $('.mostVisited');
             mostvisiteds.forEach(function (post) {
-                $("<li class='col-md-12'> " + post.title + "<span>" + "( " + post.visits + " )" + "</span> </li>").appendTo(mostvisitedposts);
+                $("<li class='col-md-12'> " + post.title + "<span>" +"<br/>تعداد بازدیدها: "+ "( " + post.visits + " )" + "</span> </li>").appendTo(mostvisitedposts);
                 // console.log(post.title+' : '+post.visits);
             });
 
@@ -106,8 +113,8 @@ function loadPosts() {
 
 
 
-        }
-    });
+        };
+    getRequest('https://ancient-bayou-43826.herokuapp.com/posts', 'GET', 'json', 'application/json',sucses);
 }
 //Load comments
 function loadcomments(post_id) {

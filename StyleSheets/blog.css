@@ -36,6 +36,7 @@ p{
 { 
     direction: rtl;
 }
+
 .postsList > li{
     list-style: none;
     margin-bottom: 11px;
@@ -65,11 +66,17 @@ padding-bottom: 10px;
     direction: rtl;
     color: red;
 }
- .mostVisited > li{
+.mostVisited
+{
+    direction: rtl;
+}
+ .mostVisited > li{ /* > is used to select the first level ul li elements inside a DOM */
+     direction: rtl;
      list-style: number;
      border-bottom: 1px solid #cccccc;
      margin-bottom: 10px;
      padding-bottom: 20px;
+     color: coral;
  }
 
 .panel{
