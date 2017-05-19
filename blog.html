@@ -5,13 +5,15 @@
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <link rel="stylesheet" type="text/css" href="StyleSheets/blog.css">
+        <link rel="stylesheet" type="text/css" href="StyleSheets/bootstrap/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!--<script type="text/javascript" src="Scripts/jquery-1.10.2.min.js"></script>-->
-        <script src="Scripts/cookie.js"></script>
+        <script src="Scripts/bootstrap/js/bootstrap.min.js"></script>
+         <script src="Scripts/cookie.js"></script>
         <script src="Scripts/blog.js"></script>
     </head>
 
-    <body>
+    <body class="container">
 
         <!--Blog app header-->
         <div class="header">
@@ -32,22 +34,22 @@
                 <input type="submit" name="submit" class="button" value="Login">
             </form>
         </div>
-        <div class="posts-panel">
+        <div class="col-md-12 posts-panel">
 
-            <div class="sidebar">
+            <div class="col-md-4 sidebar">
                 <h2>
                     5 پست پربازدید:
                 </h2>
-                <ul class="mostVisited">
+                <ul class="col-md-12 mostVisited">
                 </ul>
             </div>
-            <div class="postList">
+            <div class="col-md-8 postList">
                 <h2>
                     پست های بلاگ
                 </h2>
-                <div class="postsList">
+                <ul class="col-md-12 postsList">
 
-                </div>
+                </ul>
             </div>
 
 

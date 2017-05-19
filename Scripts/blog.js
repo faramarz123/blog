@@ -1,23 +1,18 @@
 $(document).ready(function () {
 
     //PageLoad function()
-    pageLoad();
-});
-
-//Page load 
-function pageLoad() {
-
-    //Is there a authenticated user or not
     if (readCookie('token')) {
         $('.posts-panel').show();
         loadPosts();
     }
     else {
+        //Login function to handle form submit and set cookie, then, call LoadPosts().ّ
         $('.login-panel').show();
-        //Login function to handle form submit and set cookie, then, call LoadPosts().
+        
         // login();
     }
-}
+    // pageLoad();
+});
 
 //Login body
 function login() {
@@ -33,6 +28,8 @@ function login() {
         var loginData = { username: username, password: password };
 
         //HttpPostRequest to post login info.
+        // ajaxRequest(reqUr/l, reqType, reqContentType, reqDataType, reqData, reqSuccessFunction, reqErrorFunction);
+
         $.ajax({
             url: 'https://ancient-bayou-43826.herokuapp.com/login',
             type: 'POST',
@@ -51,7 +48,7 @@ function login() {
 
             }
         });
-        return false;
+        // return false;
     });
 }
 
@@ -74,6 +71,7 @@ function loadPosts() {
         url: 'https://ancient-bayou-43826.herokuapp.com/posts',
         type: 'GET',
         dataType: 'json',
+        async:false, //....
         contentType: 'application/json',
         headers: {
             'token': readCookie('token')
@@ -86,16 +84,13 @@ function loadPosts() {
             var myPosts = allPosts.posts;
 
             myPosts.forEach(function (post) {
-                // console.log(post)
-                // var li = document.createElement("LI");
-                // var liText = ;
-                
-                // $("<li/>", { "text": liText }).appendTo(postsDOM);
-                $("<li><div class='postSpan'>" + "پست " + post.id + ": </br>" + post.title + " : </div>" + "<br/>" + post.content+"</br>" + " <button text='کامنت ها' onclick='loadcomments(" + post.id + ")' >کامنت</button> </li> <div class='postComments'><ul class='commentList'  id='commentList-" + post.id + "' ></ul></div><hr/>").appendTo(postsList);
+                 
+                $("<li class='row'>"+
+                "<div class='postSpan'><h4 class='col-md-12'>" + post.title + " </h4>   " + 
+                "<p class='col-md-12'>" + post.content + "</p>" + " <button class='btn btn-primary btn-sm pull-left' text='کامنت ها' onclick='loadcomments(" + post.id + ")' >کامنت</button> </div> <div class='postComments'><ul class='commentList'  id='commentList-" + post.id + "' ></ul></li> ").appendTo(postsList);
 
                 console.log("Posts are loaded. ");
-            });
-
+            }); 
             //Get Most Visited posts
             //Sort Posts By Visits Property
             var mostvisiteds = myPosts.sort(function (a, b) {
@@ -103,14 +98,14 @@ function loadPosts() {
             }).slice(0, 5);
             var mostvisitedposts = $('.mostVisited');
             mostvisiteds.forEach(function (post) {
-                $("<li> "+ post.title +"<span>"+"( "+ post.visits+" )"+"</span> </li>").appendTo(mostvisitedposts);
+                $("<li class='col-md-12'> " + post.title + "<span>" + "( " + post.visits + " )" + "</span> </li>").appendTo(mostvisitedposts);
                 // console.log(post.title+' : '+post.visits);
             });
 
             //Set most visited elements to the sidebar
 
 
-            
+
         }
     });
 }
@@ -141,8 +136,7 @@ function loadcomments(post_id) {
                         $('<li > کامنت ' + comment2 + ' :' + key + '</li>').appendTo(commentList);
                     });
                 }
-                else
-                {
+                else {
                     $('<li> هیچ کامنتی موجود نمی باشد. </li>').appendTo(commentList);
                 }
 
