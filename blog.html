@@ -8,71 +8,84 @@
         <link rel="stylesheet" type="text/css" href="StyleSheets/bootstrap/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!--<script type="text/javascript" src="Scripts/jquery-1.10.2.min.js"></script>-->
+        <!--Bootstrap library to design a responsive layout-->
         <script src="Scripts/bootstrap/js/bootstrap.min.js"></script>
         <script src="Scripts/cookie.js"></script>
         <script src="Scripts/blog.js"></script>
     </head>
 
+    <!--Page container-->
+
     <body class="container">
+        <!--Page Header-->
         <div class="row header" style="height:100px">
             <h2>بلاگ کاربر </h2>
         </div>
-        <div class="row  ">
-            <div class="col-md-4">
-                <div class=" panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
-                            پربازدیدترین ها
-                        </h3>
-                    </div>
-                    <div class="panel-body">
-                        <ul class="col-md-12 mostVisited">
-                        </ul>
-                    </div>
 
-                </div>
-            </div>
-
-            <div class="col-md-8 ">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
-                            پست های کاربر
-                        </h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="login-panel">
+        <div class="row">
+            <div class="login-panel">
+                <div class="col-md-5">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                ورود کاربر
+                            </h3>
+                        </div>
+                        <div class="panel-body">
                             <form class="login-form" method="post" action="#">
                                 <label for="username">Username:</label>
                                 <input type="text" name="username" id="username" class="basic">
                                 <br>
                                 <label for="password">Password:</label>
                                 <input type="text" name="password" id="password" class="basic">
-
                                 <input type="submit" name="submit" class="button" value="Login">
                             </form>
-
                         </div>
 
-                        <ul class="col-md-12 postsList">
-
-                        </ul>
                     </div>
-
                 </div>
             </div>
-
-            <div class="footer" style="clear:left">لینک های پرکاربر</div>
+           
         </div>
 
+        <div class="row">
+            <!--SideBar for mostvisiteds-->
+            <div class="posts-panel"> 
+                <div class="col-md-4">
+                    <div class=" panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                پربازدیدترین ها
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="col-md-12 mostVisited">
+                            </ul>
+                        </div>
 
-        <!--Blog app header-->
+                    </div>
+                </div>
+                <!--Body html for login and postsList -->
+                <div class="col-md-8 ">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                پست های کاربر
+                            </h3>
+                        </div>
+                        <div class="panel-body">
 
-        <!--We have { loginPanel, postsPanel} panels, corresponding to the target page we want to show-->
-        <!--This is loginPanel-->
 
+                            <ul class="col-md-12 postsList">
 
+                            </ul>
+                        </div>
 
+                    </div>
+                </div>
+            </div>
+            <div class="footer" style="clear:left">لینک های پرکاربر</div>
+        </div>
     </body>
 
     </html>

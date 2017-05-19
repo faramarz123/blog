@@ -5,6 +5,10 @@
     color: white;
     padding: 15px;
 }
+row, header
+{
+    height: 300px;
+}
 h2
 {
     text-align: center;
