@@ -7,8 +7,10 @@ $(document).ready(function () {
         loadPosts();
     }
     else {
+
         //Login function to handle form submit and set cookie, then, call LoadPosts().ّ
         $('.login-panel').show();
+
     }
 });
 
@@ -24,37 +26,18 @@ function login() {
         var username = $('#username').val();
         var password = $('#password').val();
         var loginData = { username: username, password: password };
+
         //create success callback function
         var success = function (data) {
             //Set the got toke to cookie
             createCookie('token', data.token, 10);
+
             //Call loadPosts function to load posts
             loadPosts();
         };
     });
+
     // call postRequest function and pass the required args to post the login request
-   
-
-    // $('#loading-image').show();
-    httpRequest('https://ancient-bayou-43826.herokuapp.com/login', 'POST', 'json', 'application/json', JSON.stringify(loginData), loadingBeforeSend, success, loadingComplete);
-    // $('#loading-image').hide();
+    var ajaxParameteres = { url: 'https://ancient-bayou-43826.herokuapp.com/login', type: 'POST', dataType: 'json', contentType: 'application/json',data: JSON.stringify(loginData), headesr: {'token': readCookie('token')},data: '' };
+    httpRequest(ajaxParameteres, loadingBeforeSend, success, loadingComplete);
 };
-
-
-//postRequest
-
-
-// //getRequest() function
-// function getRequest(url, type, dataType, contentType, success1) {
-//     $.ajax({
-//         url: url,
-//         type: type,
-//         dataType: dataType,
-//         // async: false, //....
-//         contentType: contentType,
-//         headers: {
-//             'token': readCookie('token')
-//         },
-//         success: success1
-//     });
-// }

@@ -1,12 +1,12 @@
-function httpRequest(urlProperty, typeProperty, dataTypeProperty, contentTypeProperty, dataProperty, beforeSend, successProperty, complete) {
-
+//HTTP Request i.e Either GET and POST request
+function httpRequest(ajaxParameteres, beforeSend, successProperty, complete) {
     $.ajax({
-        url: urlProperty,
-        type: typeProperty,
-        dataType: dataTypeProperty,
-        data: dataProperty,
+        url: ajaxParameteres.url,
+        type: ajaxParameteres.type,
+        dataType: ajaxParameteres.dataType,
+        data: ajaxParameteres.data,
         // async: false, //....
-        contentType: contentTypeProperty,
+        contentType: ajaxParameteres.contentType,
         headers: {
             'token': readCookie('token')
         },
