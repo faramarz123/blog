@@ -62,13 +62,17 @@ padding-bottom: 10px;
 
 .commentList li
 {
-    list-style: none;
+    /*list-style: none;*/
     direction: rtl;
     color: red;
 }
 .mostVisited
 {
     direction: rtl;
+}
+.postComments
+{
+    display: none;
 }
  .mostVisited > li{ /* > is used to select the first level ul li elements inside a DOM */
      direction: rtl;
