@@ -11,3 +11,9 @@ function hideDOMElement(domElementName) {
     console.log("This is " + domElementName + "DOM Hide(). ");
     $(domElementName).hide();
 }
+var loadingBeforeSend = function () {
+    $('.ajax-loader').css("visibility", "visible");
+}
+var loadingComplete = function () {
+    $('.ajax-loader').css("visibility", "hidden");
+}

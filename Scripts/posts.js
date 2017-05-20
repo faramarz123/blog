@@ -13,7 +13,9 @@ function loadPosts() {
             console.log('load posts');
             $("<li class='row'>" +
                 "<div class='postSpan'><div class='row'><h4 class='col-md-12'>" + post.title + " </h4>   " +
-                "<p class='col-md-12'>" + post.content + "</p>" + " <button class='btn btn-primary btn-sm pull-center' onclick='loadcomments(" + post.id + ")' >کامنت</button> </div><div class='row'> <div class='postComments'> <div class='panel panel-default'> <div class='panel-heading'>نظریات کاربران: </div><div class='panel-body'><ul class='commentList'  id='commentList-" + post.id + "' ></ul></div></div></li> ").appendTo(postsList);
+                "<p class='col-md-12'>" 
+                     + post.content + "</p>" + 
+                        " <button class='btn btn-primary btn-sm pull-center' onclick='loadcomments(" + post.id + ")' >کامنت</button> </div><div class='row'> <div style='display:none' id='postComments-"+post.id + "'> <div class='panel panel-default'> <div class='panel-heading'>نظریات کاربران: </div><div class='panel-body'><ul class='commentList'  id='commentList-" + post.id + "' ></ul></div></div></li> ").appendTo(postsList);
 
             console.log("Posts are loaded. ");
         });
@@ -32,6 +34,7 @@ function loadPosts() {
 
         });
     };
+
     //call gerRequest() function and pass the args
-    httpRequest('https://ancient-bayou-43826.herokuapp.com/posts', 'GET', 'json', '', 'application/json', success);
+    httpRequest('https://ancient-bayou-43826.herokuapp.com/posts', 'GET', 'json', 'application/json','',loadingBeforeSend, success, loadingComplete);
 }

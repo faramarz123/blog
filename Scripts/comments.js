@@ -1,6 +1,6 @@
 //Load comments
 function loadcomments(post_id) {
-    showDOMElement('.postComments');
+    showDOMElement('#postComments-'+ post_id);
     console.log('load comments. ', post_id);
     var commentList = $('#commentList-' + post_id);
     //When the comments btn is pusshed again, not to append the comments again
@@ -24,6 +24,6 @@ function loadcomments(post_id) {
         })
     }
     // var success = function (allComments) {
-        httpRequest('https://ancient-bayou-43826.herokuapp.com/comments/' + post_id, 'GET', 'json', '', 'application/json', success);
+        httpRequest('https://ancient-bayou-43826.herokuapp.com/comments/' + post_id, 'GET', 'json', 'application/json', '', loadingBeforeSend, success, loadingComplete);
     // }
 }

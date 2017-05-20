@@ -1,4 +1,4 @@
-function httpRequest(urlProperty, typeProperty, dataTypeProperty, contentTypeProperty, dataProperty, successProperty) {
+function httpRequest(urlProperty, typeProperty, dataTypeProperty, contentTypeProperty, dataProperty, beforeSend, successProperty, complete) {
 
     $.ajax({
         url: urlProperty,
@@ -10,6 +10,8 @@ function httpRequest(urlProperty, typeProperty, dataTypeProperty, contentTypePro
         headers: {
             'token': readCookie('token')
         },
-        success: successProperty
+        beforeSend: beforeSend,
+        success: successProperty,
+        complete: complete  
     });
 }

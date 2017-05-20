@@ -33,24 +33,28 @@ function login() {
         };
     });
     // call postRequest function and pass the required args to post the login request
-    httpRequest('https://ancient-bayou-43826.herokuapp.com/login', 'POST', 'json', 'application/json', JSON.stringify(loginData), successProperty);
+   
+
+    // $('#loading-image').show();
+    httpRequest('https://ancient-bayou-43826.herokuapp.com/login', 'POST', 'json', 'application/json', JSON.stringify(loginData), loadingBeforeSend, success, loadingComplete);
+    // $('#loading-image').hide();
 };
 
 
 //postRequest
 
 
-//getRequest() function
-function getRequest(url, type, dataType, contentType, success1) {
-    $.ajax({
-        url: url,
-        type: type,
-        dataType: dataType,
-        // async: false, //....
-        contentType: contentType,
-        headers: {
-            'token': readCookie('token')
-        },
-        success: success1
-    });
-}
+// //getRequest() function
+// function getRequest(url, type, dataType, contentType, success1) {
+//     $.ajax({
+//         url: url,
+//         type: type,
+//         dataType: dataType,
+//         // async: false, //....
+//         contentType: contentType,
+//         headers: {
+//             'token': readCookie('token')
+//         },
+//         success: success1
+//     });
+// }

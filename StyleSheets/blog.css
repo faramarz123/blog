@@ -70,10 +70,6 @@ padding-bottom: 10px;
 {
     direction: rtl;
 }
-.postComments
-{
-    display: none;
-}
  .mostVisited > li{ /* > is used to select the first level ul li elements inside a DOM */
      direction: rtl;
      list-style: number;
@@ -91,4 +87,17 @@ padding-bottom: 10px;
 }
 ul li{
     direction: rtl;
+}
+.ajax-loader {
+  visibility: hidden;
+  background-color: rgba(255,255,255,0.7);
+  position: absolute;
+  width: 100%;
+  height:100%;
+}
+
+.img-responsive {
+  position: relative;
+  top:50%;
+  left:40%;
 }
