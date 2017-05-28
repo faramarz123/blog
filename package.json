@@ -1,0 +1,33 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "blog repository",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "./node_modules/.bin/webpack-dev-server --port 4000 --content-base ./public" //This is set in order to load on a specified localhost port
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/faramarz123/blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/faramarz123/blog/issues"
+  },
+  "homepage": "https://github.com/faramarz123/blog#readme",
+  "dependencies": {
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-router": "^4.1.1",
+    "webpack": "^2.6.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "webpack-dev-server": "^2.4.5"
+  }
+}
