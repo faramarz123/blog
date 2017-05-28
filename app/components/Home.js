@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import { browserHistory } from 'react-router';
 import {createCookie, readCookie, eraseCookie} from './cookieCollection.js';
 
-// console.log(createCookie)
-
 class Home extends Component
 {
     
@@ -14,6 +12,10 @@ class Home extends Component
             this.handleSubmit = this.handleSubmit.bind(this);
             this.handleUsername = this.handleUsername.bind(this);
             this.handlePassword = this.handlePassword.bind(this);
+            if(readCookie('token'))
+            {
+                browserHistory.push('/Posts');
+            }
         }
         handleUsername(event)
         {
