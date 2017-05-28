@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { browserHistory } from 'react-router';
 import {createCookie, readCookie, eraseCookie} from './cookieCollection.js';
 
-console.log(createCookie)
+// console.log(createCookie)
 
 class Home extends Component
 {
@@ -36,12 +36,8 @@ class Home extends Component
                     'Content-Type': 'application/json'
             }
             })
-            .then(res => {
-                console.log('set cookie. ');
-                // cookieCollection.hello();
-                createCookie('cookie2', 'value2', 1); 
-                return res.json();
-            })
+            .then(res => res.json())
+            .then(res => createCookie('token', res.token, 1))
             .then(() => browserHistory.push('/Posts'))
             .catch(console.warn)
             event.preventDefault();

@@ -1,26 +1,47 @@
 import React, {Component} from 'react';
-
+import {createCookie, readCookie, eraseCookie} from './cookieCollection.js';
+import Comments from './Comments'
 class Posts extends Component{
     constructor(props)
     {
         super(props);
-        this.state = {Posts: null}
+        this.state = {Posts: null};
+        this.handleClick = this.handleClick.bind(this);
+    }
+    handleClick(e) {
+        e.preventDefault();
+        console.log('The link was clicked.');
     }
     componentDidMount() {
-    fetchUser('faramarz123')
-      .then(res => res.json())
-      .then(user => {
-        this.setState({
-          user
+     console.log('cookie is: ',readCookie('token'));
+     fetch('https://ancient-bayou-43826.herokuapp.com/posts', {
+            method: 'GET',
+            headers: {
+                    'Content-Type': 'application/json',
+                    'token': readCookie('token')
+            }
         })
-    })
+        .then(res => res.json())
+        .then(res => { console.log(res); return res.posts})
+        .then(res => { 
+            console.log(res);
+            // const list = res.forEach(item => <li>{item.content}</li>)
+            // res.forEach(item => console.log(item.visits))
+            const list = res.map(item => <li className='row' key={item.id}><p>{item.content}</p>
+             <Comments commentId={item.id} />
+            </li>)
+            this.setState({Posts: list});
+        // })
+            // return <ul>{Posts}</ul>
+        
+        })
+            // .then(res => res.json())
   }
     render()
     {
         return(
-            <div>
-                <p>Post List</p>
-            </div>
+            // <div>hello<ul><li>1</li><li>2</li></ul></div>
+            <div dir="rtl"><ul>{this.state.Posts}</ul></div>
         )
     }
 }
