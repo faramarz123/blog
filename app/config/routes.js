@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Main from '../components/Main';
 import Home from '../components/Home';
-import {Router, Route} from 'react-router';
+import Posts from '../components/Posts';
+import {Route, IndexRoute} from 'react-router';
 
-class routes extends Component{
-    render(){
-        return (
-                <Route path="/" component={Main}>
-                </Route>
-        )}
-}
+module.exports = (
+    <Route path="/" component={Main}>
+        <Route path="Posts" component={Posts} />
+        <IndexRoute component={Home} />
+    </Route>
+)

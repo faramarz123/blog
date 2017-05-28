@@ -1,23 +1,21 @@
 import React, { Component } from 'react';
-// import { render } from 'react-dom';
-// import {Router, Route} from 'react-router';
+
 
 class Main extends Component{
     render(){
         return (
-                <div> Hello
+                <div className="main-container">
+                    <nav className="navbar navbar-default" role="navigation">
+                        <div className="col-md-7 col-md-offset-2" style={{marginTop: 5}}>
+                            Menu
+                        </div>    
+                    </nav>
+                    <div className="container">
+                        {this.props.children}
+                    </div>
                 </div>
+                
         )}
 }
 
 export default Main;
-/*render(
-    <Router>
-        
-        <Route path="/" component={Main}/>
-    </Router>,
-    document.getElementById('app')
-);*/
-// ReactDOM.render(<Main />,document.getElementById('app'))
-
-// ReactDOM.render(<Main />, document.getElementById('app'));

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
-import {Router, Route} from 'react-router';
-import roures from './config/routes';
+import ReactDOM, { render } from 'react-dom';
+import {Router, browserHistory} from 'react-router';
+import routes from './config/routes';
 
 ReactDOM.render(
-    <Router>{routes}</Router>, document.getElementById('app')
+    <Router history={browserHistory}>{routes}</Router>, document.getElementById('app')
 )
