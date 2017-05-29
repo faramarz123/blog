@@ -5,7 +5,7 @@ class Posts extends Component{
     constructor(props)
     {
         super(props);
-        this.state = {Posts: null};
+        this.state = {Posts: null, mostVisitedPosts: null};
         this.handleClick = this.handleClick.bind(this);
     }
     handleClick(e) {
@@ -22,7 +22,10 @@ class Posts extends Component{
             }
         })
         .then(res => res.json())
-        .then(res => { console.log(res); return res.posts})
+        .then(res => { 
+                console.log("Posts are; ", res.posts); return res.posts;
+                
+            })
         .then(res => { 
             console.log(res);
             // const list = res.forEach(item => <li>{item.content}</li>)
@@ -40,7 +43,7 @@ class Posts extends Component{
     render()
     {
         return(
-            // <div>hello<ul><li>1</li><li>2</li></ul></div>
+             !this.state.Posts ? <h1>Loading ...</h1> :
             <div dir="rtl"><ul>{this.state.Posts}</ul></div>
         )
     }
