@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 import {createCookie, readCookie, eraseCookie} from './cookieCollection.js';
 import Comments from './Comments';
 import Displayallposts from './displayposts';
-import Mostvisitedposts from './displaymostvisitedposts';
 
 //posts component
 class Posts extends Component{
