@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Footer from './footer';
 import {createCookie, readCookie, eraseCookie} from './cookieCollection.js';
 
-class Main extends Component{
+class Index extends Component{
 
     constructor()
     {
@@ -25,12 +25,12 @@ class Main extends Component{
                     </nav>
                     <div className="container">
                         {this.props.children}
+                        
                         <Footer />
                     </div>
-                    <div></div>
                 </div>
                 
         )}
 }
 
-export default Main;
+export default Index;

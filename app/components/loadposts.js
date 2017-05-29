@@ -68,7 +68,7 @@ class Posts extends Component{
                     <div className="col-md-8 ">
                         <div className="panel panel-default">
                             <div className="panel-heading text-center">
-                                <h3 class="panel-title">
+                                <h3 className="panel-title">
                                  پست های کاربر
                                 </h3>
                             </div>

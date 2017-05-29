@@ -8,13 +8,11 @@ class Comments extends Component
     {
         super(props);
         this.state = {commentsUL: null};
-         this.handleClick = this.handleClick.bind(this);
+        this.handleClick = this.handleClick.bind(this);
 
     }
     handleClick(e) {
 
-        // this.setState({commentsUL: null});
-        
         e.preventDefault();
         console.log('Comments mount. ');
         fetch('https://ancient-bayou-43826.herokuapp.com/comments/'+this.props.id, {

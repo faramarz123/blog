@@ -3,12 +3,6 @@ import Comments from './Comments';
 
 class Postlist extends Component
 {
-
-    constructor(props)
-    {
-        super(props);
-    }
-
     render()
     {
         console.log('postList is : ',this.props.value);

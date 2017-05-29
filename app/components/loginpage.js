@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { browserHistory } from 'react-router';
 import {createCookie, readCookie, eraseCookie} from './cookieCollection.js';
 
-class Home extends Component
+class Login extends Component
 {
     
         constructor(props) {
@@ -66,4 +66,4 @@ class Home extends Component
     }
 }
 
-export default Home;
+export default Login;
