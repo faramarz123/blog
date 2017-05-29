@@ -58,7 +58,7 @@ class Home extends Component
                  <label>
                  Password:
                  </label>
-                        <input type="password" name="password"  onChange={this.handlePassword} />
+                        <input type="text" name="password"  onChange={this.handlePassword} />
                  
                  <input type="submit" value="Submit" />
             </form>
