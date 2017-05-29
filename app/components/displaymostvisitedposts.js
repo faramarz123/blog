@@ -1,16 +1,10 @@
 import React, {Component} from 'react';
 
-class Mostvisited extends Component
+class Mostvisitedposts extends Component
 {
-    constructor(props)
-    {
-        super(props);
-    }
-
-
     render()
     {
-        console.log('mostvisitedddd is: ',this.props.data);
+        console.log('mostvisitedposts are : ',this.props.mostvisitedposts);
         return(
         // let Data = this.props.data;
         // let lisst = Data.map(post => <ol dir="rtl" key={post.id} className="col-md-12"><p>{post.title}</p><br /><span>تعداد بازدیدها: {post.visits}</span><hr/></ol>)
@@ -24,4 +18,4 @@ class Mostvisited extends Component
     }
 }
 
-export default Mostvisited;
+export default Mostvisitedposts;
