@@ -6,7 +6,7 @@ import {Route, IndexRoute} from 'react-router';
 
 module.exports = (
     <Route path="/" component={Index}>
-        <Route path="Posts" component={Posts} />
+        <Route path="posts" component={Posts} />
         <IndexRoute component={Login} />
     </Route>
 )

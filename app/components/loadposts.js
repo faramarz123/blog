@@ -2,14 +2,14 @@
 import React, {Component} from 'react';
 import {createCookie, readCookie, eraseCookie} from './cookieCollection.js';
 import Comments from './Comments';
-import Postlist from './postList';
+import Displayallposts from './displayposts';
 
 //posts component
 class Posts extends Component{
     constructor(props)
     {
         super(props);
-        this.state = {Posts: null, listpost: null, mostVisitedPosts: null};
+        this.state = {allposts: null, mostvisitedposts: null, listpost: null };
     }
 
     componentDidMount() {
@@ -22,7 +22,8 @@ class Posts extends Component{
             }
         })
         .then(res => res.json())
-        .then(res => Promise.resolve(res.posts))
+        .then(res => { console.log(res.posts); return res.posts})
+        // .then(res => Promise.resolve(res.posts))
         .then(res => { 
             this.setState({listpost: res});
             //Attach posts to reactDOM
@@ -37,9 +38,9 @@ class Posts extends Component{
             }).slice(0, 5);
             console.log('mostvisits are; ',mostvisits);
             const mostvisitsDOM = mostvisits.map(post => <ol dir="rtl" key={post.id} className="col-md-12"><p>{post.title}</p><br /><span>تعداد بازدیدها: {post.visits}</span><hr/></ol>)
-            this.setState({mostVisitedPosts: mostvisitsDOM});
+            this.setState({mostvisitedposts: mostvisitsDOM});
 
-            this.setState({Posts: list});
+            this.setState({allposts: list});
             
         
         })
@@ -49,7 +50,7 @@ class Posts extends Component{
     render()
     {
         return(
-            !this.state.Posts ? <h1 dir="rtl">در حال بارگذاری ...</h1> :
+            // !this.state.Posts ? <h1 dir="rtl">در حال بارگذاری ...</h1> :
             <div className="row"> 
                 <div className="posts-panel">
                     <div className="col-md-4">
@@ -74,7 +75,7 @@ class Posts extends Component{
                             </div>
                         <div className="panel-body">
                             <div dir="rtl" className="col-md-12">
-                                <Postlist  name='ali' value={this.state.listpost}/>
+                                <Displayallposts  allposts={this.state.allposts}/>
                             </div>
                             </div>
                         </div>
