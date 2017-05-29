@@ -10,7 +10,7 @@ class Posts extends Component{
     constructor(props)
     {
         super(props);
-        this.state = {allposts: null, mostvisitedposts: null, listpost: null };
+        this.state = {allposts: [], mostvisitedposts: [] };
     }
 
     componentDidMount() {
@@ -50,7 +50,7 @@ class Posts extends Component{
     render()
     {
         return(
-            // !this.state.Posts ? <h1 dir="rtl">در حال بارگذاری ...</h1> :
+            !this.state.allposts ? <h1 dir="rtl">در حال بارگذاری ...</h1> :
             <div className="row"> 
                 <div className="posts-panel">
                     <div className="col-md-4">
@@ -62,9 +62,8 @@ class Posts extends Component{
                             </div>
                             <div dir="rtl" className="panel-body">
                                 <ul className="col-md-12">
-                                    <Mostvisitedposts mostvisitedposts={this.state.mostvisitedposts}/>
+                                    <Displayallposts allposts={this.state.mostvisitedposts}/>
                                     </ul>
-                                {/*<ul dir="rtl" className="col-md-12">{this.state.mostVisitedPosts}</ul></div>*/}
                             </div>
                         </div>
                     </div>
