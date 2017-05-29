@@ -27,9 +27,9 @@ class Posts extends Component{
             console.log(res);
             // const list = res.forEach(item => <li>{item.content}</li>)
             // res.forEach(item => console.log(item.visits))
-            const list = res.map(item => <li className='row' key={item.id}><p>{item.content}</p>
+            const list = res.map(item => <ol className='row' key={item.id}><p>{item.content}</p>
              <Comments commentId={item.id} />
-            </li>)
+            </ol>)
             this.setState({Posts: list});
         // })
             // return <ul>{Posts}</ul>
