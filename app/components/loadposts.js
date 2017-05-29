@@ -23,14 +23,9 @@ class Posts extends Component{
             }
         })
         .then(res => res.json())
-        .then(res => { console.log('allposts from loadposts : ',res.posts); return res.posts})
-        // .then(res => Promise.resolve(res.posts))
+        .then(res => { return res.posts})
         .then(res => {  
             this.setState({allposts: res});
-            //Attach posts to reactDOM
-            /*const list = res.map(item => <ol className='row' key={item.id}><p>{item.content}</p>
-             <Comments commentId={item.id} /><hr/>
-            </ol>)*/
 
             //get mostvisited posts and attach it to mostvisitedDOM
             const mostvisiteds = res.sort(function (a, b) {
@@ -39,8 +34,6 @@ class Posts extends Component{
             console.log('mostvisitedposts are; ',mostvisiteds);
             // const mostvisitsDOM = mostvisits.map(post => <ol dir="rtl" key={post.id} className="col-md-12"><p>{post.title}</p><br /><span>تعداد بازدیدها: {post.visits}</span><hr/></ol>)
             this.setState({mostvisitedposts: mostvisiteds});
-
-            // this.setState({allposts: list});
             
         
         })
@@ -61,9 +54,9 @@ class Posts extends Component{
                                 </h3>
                             </div>
                             <div dir="rtl" className="panel-body">
-                                <ul className="col-md-12">
+                                <div className="col-md-12">
                                     <Displayallposts allposts={this.state.mostvisitedposts}/>
-                                    </ul>
+                                    </div>
                             </div>
                         </div>
                     </div>
