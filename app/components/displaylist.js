@@ -1,32 +1,43 @@
 import React, {Component} from 'react';
-import Comments from './Comments';
+// import Comments from './Comments';
 import Post from './showpost';
+import Comment from './showcomment';
 
 class List extends Component
 {
     
     render()
     {
-        console.log('allposts from displayallposts are : ',this.props.data);
-        // const list = (this.props.allposts).map(post => <ol className='row' key={post.id}><p>{post.content}</p><Comments id={post.id} /></ol>);
-        const data = this.props.data;
+        const {data, isPost, isComment, isMostVisited} = this.props;
         
-        if(!data)     
+        if(!data && isPost)     
             return(<h2>بارگذاری ...</h2>);
         
-        // return(
-            // !this.props.data ? <h2>بارگذاری ...</h2> : 
-          if(data)
+          //show posts list
+          if(isPost)
           {
+              console.log('is postlist. and data is : ',data);
            return( 
             <div> 
                 {
-                    data.map((post) =>             
-                        <Post isMostVisited={this.props.isMostVisited} data={post} key={post.id} />
-                )}
+                    data.map((post,index) => {return <Post isMostVisited={isMostVisited} key={index} data={post}></Post>})
+                    /*data.map(post => {return <Post isMostVisited={isMostVisited} data={post} key={post.id} />})*/
+                }
             </div>
             )
-                // <ul> <PostsList isallormostvisit={this.props.isallormostvisited} posts={this.props.data} /></ul>)
+        }
+
+        //show comment list
+          if(data && isComment)
+          {
+              console.log('comment list. ');
+              return(
+                  <div>
+                      {
+                        data.map((comment,index) => {return <Comment key={index} data={comment} />})
+                      }
+                  </div>
+              )
           }    
 }
 }
