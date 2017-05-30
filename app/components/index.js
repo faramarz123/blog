@@ -9,6 +9,7 @@ class Index extends Component{
     {
         super();
         this.logout = this.logout.bind(this);
+        this.state={shouldBeHidden: true}
     }
 
     logout(e)
@@ -20,20 +21,22 @@ class Index extends Component{
     }
     render(){
         return (
-                <div className="main-container">
+            <div className="container">
                     <nav className="navbar navbar-default" role="navigation">
                         <div className="col-md-12 text-center float-left" style={{marginTop: 5,}}>
-                            <div className="col-md-3"><button onClick={this.logout} className="btn">خروج</button></div>
+                            {/*{this.state.shouldBeHidden ? <div className="col-md-3"><button id="logoutButton" onClick={this.logout} className="btn">خروج</button></div> : null}*/}
                             <div className="col-md-9"><h1>بلاگ</h1></div>
                         </div>
                     </nav>
-                    <div className="container">
-                        {this.props.children}
-                        
+
+                    <div className="row">
+                          {this.props.children}
+                    </div>
+
+                    <div>
                         <Footer />
                     </div>
-                </div>
-                
+            </div>
         )}
 }
 
