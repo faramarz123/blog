@@ -10,8 +10,7 @@ class Displayallposts extends Component
         // const list = (this.props.allposts).map(post => <ol className='row' key={post.id}><p>{post.content}</p><Comments id={post.id} /></ol>);
         return(
         !this.props.allposts ? <h2>بارگذاری ...</h2> : 
-                <ul> <PostsList posts={this.props.allposts} /></ul>
-            // <ul>{this.props.allposts}</ul>
+                <ul> <PostsList isallormostvisit={this.props.isallormostvisited} posts={this.props.allposts} /></ul>
         )
     }
 }

@@ -54,7 +54,7 @@ class Posts extends Component{
                             </div>
                             <div dir="rtl" className="panel-body">
                                 <div className="col-md-12">
-                                    <Displayallposts allposts={this.state.mostvisitedposts}/>
+                                    <Displayallposts isallormostvisited="mostvisitedposts" allposts={this.state.mostvisitedposts}/>
                                     </div>
                             </div>
                         </div>
@@ -68,7 +68,7 @@ class Posts extends Component{
                             </div>
                         <div className="panel-body">
                             <div dir="rtl" className="col-md-12">
-                                <Displayallposts  allposts={this.state.allposts}/>
+                                <Displayallposts isallormostvisited="allposts" allposts={this.state.allposts}/>
                             </div>
                             </div>
                         </div>

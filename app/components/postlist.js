@@ -4,17 +4,36 @@ class PostsList extends Component
 {
     render()
     {
-        // console.log('posts from postlistsssss. ', this.props.posts);
-        let arr = this.props.posts;
-        let posts = this.props.posts.map(post =>
-            <li className="list-group-item" key={post.id} >{post.content}</li>
-        );
+        
+        // let posts = this.props.posts.map(post =>
+        //     <li className="list-group-item" key={post.id} >{post.content}</li>
+        // );
+        let posts=[];
+
+        //render mostvisited posts
+        if(this.props.isallormostvisit)
+        {
+            console.log('most visiteds')
+              posts = this.props.posts.map(post =>
+                <li className="list-group-item" key={post.id} >{post.title}</li>
+            );
+            
+        }
+
+        //render allposts
+        else if(this.props.isallormostvisit)
+        {
+             posts = this.props.posts.map(post =>
+                <li className="list-group-item" key={post.id} >{post.content}</li>
+            );
+            
+        }
         return(
-            !this.props.posts ? <h2>بارگذاری ...</h2> : 
-                    <ul className="list-group">
-                        {posts}
-                     </ul>
-        )
+                !this.props.posts ? <h2>بارگذاری ...</h2> : 
+                        <ul className="list-group">
+                            hello{ posts  }
+                        </ul>
+            )
     }
 }
 
