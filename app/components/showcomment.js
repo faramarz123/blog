@@ -9,26 +9,21 @@ class Comment extends Component
         this.state={
             comments: null
         };
-       
     }
     
     render()
     {
         const {data} = this.props;
-        // const {data} = this.props;
-        console.log('Comments from showcommentssssssssss : ',data)
-        
 
-    return(
-        !this.state.comments ? <div></div> :
-        <div>
-            <p>
-                {/*{data}*/}
-            </p>
-        </div>
-    )
-
-    }
+        //Show comment 
+        return(
+            !data ? <p></p> :
+            <div>
+                <p>
+                    {this.props.index}. {data}
+                </p>
+            </div>
+        )}
 }
 
 export default Comment;

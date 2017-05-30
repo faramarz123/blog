@@ -25,21 +25,17 @@ class Posts extends Component{
         .then(res => { return res.posts})
         .then(res => {  
             this.setState({allposts: res});
-            // console.log('res is : ',res);
+            
             //get mostvisited posts and attach it to mostvisitedDOM
             const mostvisiteds = res.sort(function (a, b) {
                 return b.visits - a.visits;
             }).slice(0, 5);
-            // console.log('mostvisitedposts are; ',mostvisiteds);
-            // const mostvisitsDOM = mostvisits.map(post => <ol dir="rtl" key={post.id} className="col-md-12"><p>{post.title}</p><br /><span>تعداد بازدیدها: {post.visits}</span><hr/></ol>)
             this.setState({mostvisitedposts: mostvisiteds});
-            // console.log('mostvisitedposts are; ',mostvisiteds);
-            
         
         })
            
   }
-  //render reactDOM
+
     render()
     {
         return(

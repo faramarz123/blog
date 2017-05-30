@@ -20,6 +20,8 @@ class Post extends Component
         // e.preventDefault();
         // console.log('hello from button eventHandler. And id is :  ',id);
         // return(<h1>hello</h1>);
+        if(!this.state.comments)
+        {
         fetch('https://ancient-bayou-43826.herokuapp.com/comments/'+id, {
             method: 'GET',
             headers: {
@@ -30,11 +32,15 @@ class Post extends Component
         .then(res => res.json())
         .then(res => res.comments)
         .then(res => {
-                this.setState({comments: res[0].comments});
-                console.log('resssss.comments is : ',res[0].comments);
-                console.log('comments is : ',this.state.comments);
+                if(!res[0].comments)
+                    this.setState({comments: ['کامنت وجود ندارد.']});
+                else
+                    this.setState({comments: res[0].comments});
+                // console.log('resssss.comments is : ',res[0].comments);
+                // console.log('comments is : ',this.state.comments);
                 // return res.comments; 
             });
+        }
         // this.setState({comments: res}); 
     }
     render()

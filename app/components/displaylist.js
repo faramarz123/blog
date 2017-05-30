@@ -30,15 +30,13 @@ class List extends Component
         //show comment list
           else if(isComment)
           {
-              console.log('comments from comment areeeeee : ',data);
-            //   console.log('comment list. And data is : ', data);
             if(data)
             {
               return(
-                  <div>
+                  <div><ul>
                       {
-                        data.map((comment,index) => {return <Comment key={index} data={data} ></Comment>})
-                      }
+                        data.map((comment,index) => {return <Comment key={index} index={index} data={comment} ></Comment>})
+                      }</ul>
                   </div>
               )
             }
@@ -46,7 +44,11 @@ class List extends Component
             {
                 return(
                     <div>
-                        <Comment data={data} />
+                        <ul>
+                        {
+                            <Comment key={0} data={data} />
+                        }
+                        </ul>
                     </div>
                 )
             }
