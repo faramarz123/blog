@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import List from './displaylist';
 
 class Comment extends Component
 {
@@ -13,14 +14,16 @@ class Comment extends Component
     
     render()
     {
-        
         const {data} = this.props;
+        // const {data} = this.props;
+        console.log('Comments from showcommentssssssssss : ',data)
+        
 
     return(
         !this.state.comments ? <div></div> :
         <div>
             <p>
-                {data.content}
+                {/*{data}*/}
             </p>
         </div>
     )

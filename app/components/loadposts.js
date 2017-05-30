@@ -9,7 +9,7 @@ class Posts extends Component{
     constructor(props)
     {
         super(props);
-        this.state = {allposts: [], mostvisitedposts: null };
+        this.state = {allposts: null, mostvisitedposts: null };
     }
 
     componentDidMount() {
@@ -25,7 +25,7 @@ class Posts extends Component{
         .then(res => { return res.posts})
         .then(res => {  
             this.setState({allposts: res});
-            console.log('res is : ',res);
+            // console.log('res is : ',res);
             //get mostvisited posts and attach it to mostvisitedDOM
             const mostvisiteds = res.sort(function (a, b) {
                 return b.visits - a.visits;
@@ -33,6 +33,7 @@ class Posts extends Component{
             // console.log('mostvisitedposts are; ',mostvisiteds);
             // const mostvisitsDOM = mostvisits.map(post => <ol dir="rtl" key={post.id} className="col-md-12"><p>{post.title}</p><br /><span>تعداد بازدیدها: {post.visits}</span><hr/></ol>)
             this.setState({mostvisitedposts: mostvisiteds});
+            // console.log('mostvisitedposts are; ',mostvisiteds);
             
         
         })
@@ -54,7 +55,7 @@ class Posts extends Component{
                             </div>
                             <div dir="rtl" className="panel-body">
                                 <div className="col-md-12">
-                                    <List isPost={true} isMostVisited={true} data={this.state.mostvisitedposts}/>
+                                    <List isPost={true} isComment={false} isMostVisited={true} data={this.state.mostvisitedposts}/>
                                     </div>
                             </div>
                         </div>

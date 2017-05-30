@@ -10,13 +10,13 @@ class List extends Component
     {
         const {data, isPost, isComment, isMostVisited} = this.props;
         
-        if(!data && isPost)     
+            if(!data && isPost)     
             return(<h2>بارگذاری ...</h2>);
         
           //show posts list
-          if(isPost)
+          else if(isPost)
           {
-              console.log('is postlist. and data is : ',data);
+            //   console.log('is postlist. and data is : ',data);
            return( 
             <div> 
                 {
@@ -28,17 +28,29 @@ class List extends Component
         }
 
         //show comment list
-          if(data && isComment)
+          else if(isComment)
           {
-              console.log('comment list. ');
+              console.log('comments from comment areeeeee : ',data);
+            //   console.log('comment list. And data is : ', data);
+            if(data)
+            {
               return(
                   <div>
                       {
-                        data.map((comment,index) => {return <Comment key={index} data={comment} />})
+                        data.map((comment,index) => {return <Comment key={index} data={data} ></Comment>})
                       }
                   </div>
               )
-          }    
+            }
+            else
+            {
+                return(
+                    <div>
+                        <Comment data={data} />
+                    </div>
+                )
+            }
+          }
 }
 }
 
