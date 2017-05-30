@@ -49,19 +49,19 @@ class Login extends Component
         {
             //render login form
             return(
-                <form onSubmit={this.handleSubmit}>
-                 <h2>Login form</h2><br/>
+                <form dir="rtl" onSubmit={this.handleSubmit}>
+                 <h2>ورود به سیستم</h2><br/>
                  <label>
-                 Username:
+                 نام کاربری:
                  </label>   
                         <input type="text" name="name"  onChange={this.handleUsername}/>
                  <br />
                  <label>
-                 Password:
+                 رمز ورود:
                  </label>
-                        <input type="text" name="password"  onChange={this.handlePassword} />
+                        <input type="password" name="password"  onChange={this.handlePassword} />
                  
-                 <input type="submit" value="Submit" />
+                 <input type="submit" value="ورود"  />
             </form>
         )
     }
