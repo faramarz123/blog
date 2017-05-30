@@ -40,7 +40,6 @@ class Post extends Component
     }
     render()
     {
-
         const {data, isMostVisited} = this.props;
         
         //Show mostvisited posts

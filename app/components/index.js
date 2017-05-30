@@ -8,6 +8,7 @@ class Index extends Component{
     constructor()
     {
         super();
+        console.log('index');
         // this.logout = this.logout.bind(this);
     }
 

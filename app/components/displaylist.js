@@ -10,7 +10,7 @@ class List extends Component
         const {data, isPost, isComment, isMostVisited} = this.props;
 
          //loading
-         if(!data && isPost)     
+         if((!data && isPost) )     
             return(<h2>بارگذاری ...</h2>);
         
           //show posts list

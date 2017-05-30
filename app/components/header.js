@@ -24,8 +24,8 @@ class Header extends Component
         return(
             <nav className="navbar navbar-default" role="navigation">
                 <div className="col-md-12 text-center float-left" style={{marginTop: 5,}}>
-                        <div className="col-md-3">{readCookie('token') ? <button id="logoutButton" onClick={this.logout} className="btn">خروج</button> : null}</div>
-                        <div className="col-md-9"><h1>بلاگ</h1></div>
+                        <div className="col-md-2">{readCookie('token') ? <button id="logoutButton" onClick={this.logout} className="btn">خروج</button> : null}</div>
+                        <div className="col-md-10"><h1>بلاگ</h1></div>
                 </div>
             </nav>
         )

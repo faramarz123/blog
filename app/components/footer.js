@@ -7,7 +7,7 @@ class Footer extends Component
     render()
     {
         return(
-            <div className="footer text-center">لینک های پرکاربرد</div>
+            <div className="panel-footer text-center">لینک های پرکاربرد</div>
         )
     }
 }
