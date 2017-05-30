@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import {createCookie, readCookie, eraseCookie} from './cookieCollection.js';
 import PostsPanel from './postsPanel';
 import List from './displaylist';
+import {getTop5Posts} from '../utils';
 
 //posts component
 class Posts extends Component{
@@ -13,6 +14,7 @@ class Posts extends Component{
     }
 
     componentDidMount() {
+        
      // GET httprequest to get posts 
      fetch('https://ancient-bayou-43826.herokuapp.com/posts', {
             method: 'GET',
@@ -26,11 +28,9 @@ class Posts extends Component{
         .then(res => {  
             this.setState({allposts: res});
             
-            //get mostvisited posts and attach it to mostvisitedDOM
-            // const mostvisiteds1 = getTop5Posts(res);
-            const mostvisiteds = res.sort(function (a, b) {
-                return b.visits - a.visits;
-            }).slice(0, 5);
+            //get mostvisited posts by module getTop5Posts
+            const mostvisiteds = getTop5Posts(res);
+
             this.setState({mostvisitedposts: mostvisiteds});
         
         })
