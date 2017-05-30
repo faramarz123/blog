@@ -1,6 +1,6 @@
 //import required data
 import React, {Component} from 'react';
-import {createCookie, readCookie, eraseCookie} from './cookieCollection.js';
+import {createCookie, readCookie, eraseCookie} from '../cookieCollection.js';
 import PostsPanel from './postsPanel';
 import List from './displaylist';
 import {getTop5Posts} from '../utils';
@@ -14,7 +14,7 @@ class Posts extends Component{
     }
 
     componentDidMount() {
-        
+
      // GET httprequest to get posts 
      fetch('https://ancient-bayou-43826.herokuapp.com/posts', {
             method: 'GET',

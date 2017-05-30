@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { browserHistory } from 'react-router';
-import {createCookie, readCookie, eraseCookie} from './cookieCollection.js';
+import {createCookie, readCookie, eraseCookie} from '../cookieCollection.js';
 
 //login component
 class Login extends Component

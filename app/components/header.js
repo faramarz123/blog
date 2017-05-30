@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import { browserHistory } from 'react-router';
-import {createCookie, readCookie, eraseCookie} from './cookieCollection.js';
+import {createCookie, readCookie, eraseCookie} from '../cookieCollection.js';
 
 class Header extends Component
 {

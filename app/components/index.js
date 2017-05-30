@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Footer from './footer';
-import {createCookie, readCookie, eraseCookie} from './cookieCollection.js';
+import {createCookie, readCookie, eraseCookie} from '../cookieCollection.js';
 import Header from './header';
 
 class Index extends Component{

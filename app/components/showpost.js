@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {createCookie, readCookie, eraseCookie} from './cookieCollection.js';
+import {createCookie, readCookie, eraseCookie} from '../cookieCollection.js';
 import List from './displaylist';
 import Comment from './showcomment';
 
@@ -10,7 +10,6 @@ class Post extends Component
     constructor(props)
     {
         super(props);
-        // this.getComments = this.getComments.bind(this);
         this.getComments = this.getComments.bind(this);
         this.state = {comments: null};
     }
