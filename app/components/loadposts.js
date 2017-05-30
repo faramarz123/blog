@@ -27,6 +27,7 @@ class Posts extends Component{
             this.setState({allposts: res});
             
             //get mostvisited posts and attach it to mostvisitedDOM
+            // const mostvisiteds1 = getTop5Posts(res);
             const mostvisiteds = res.sort(function (a, b) {
                 return b.visits - a.visits;
             }).slice(0, 5);

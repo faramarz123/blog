@@ -15,7 +15,7 @@ class Comment extends Component
     {
         const {data} = this.props;
 
-        //Show comment 
+        //Show comment content
         return(
             !data ? <p></p> :
             <div>

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-// import Comments from './Comments';
 import Post from './showpost';
 import Comment from './showcomment';
 
@@ -9,19 +8,18 @@ class List extends Component
     render()
     {
         const {data, isPost, isComment, isMostVisited} = this.props;
-        
-            if(!data && isPost)     
+
+         //loading
+         if(!data && isPost)     
             return(<h2>بارگذاری ...</h2>);
         
           //show posts list
           else if(isPost)
           {
-            //   console.log('is postlist. and data is : ',data);
            return( 
             <div> 
                 {
                     data.map((post,index) => {return <Post isMostVisited={isMostVisited} key={index} data={post}></Post>})
-                    /*data.map(post => {return <Post isMostVisited={isMostVisited} data={post} key={post.id} />})*/
                 }
             </div>
             )
@@ -30,6 +28,7 @@ class List extends Component
         //show comment list
           else if(isComment)
           {
+            //if data is not null
             if(data)
             {
               return(
@@ -40,6 +39,7 @@ class List extends Component
                   </div>
               )
             }
+            //if data is null
             else
             {
                 return(

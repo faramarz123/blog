@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import { browserHistory } from 'react-router';
 import {createCookie, readCookie, eraseCookie} from './cookieCollection.js';
 
+//login component
 class Login extends Component
 {
-    
         constructor(props) {
             super(props);
             this.state = {token: '', usernamevalue: '', passwordvalue: ''};
@@ -14,7 +14,7 @@ class Login extends Component
             this.handlePassword = this.handlePassword.bind(this);
             if(readCookie('token'))
             {
-                browserHistory.push('/Posts');
+                browserHistory.push('/posts');
             }
         }
         handleUsername(event)
@@ -27,7 +27,7 @@ class Login extends Component
         }
         handleSubmit(event)
         {
-            
+            //http request to login. If succeed to login, then, redirect to posts 
             fetch('https://ancient-bayou-43826.herokuapp.com/login', {
             method: 'POST',
             body: JSON.stringify({
@@ -47,6 +47,7 @@ class Login extends Component
         }
         render()
         {
+            //render login form
             return(
                 <form onSubmit={this.handleSubmit}>
                  <h2>Login form</h2><br/>
