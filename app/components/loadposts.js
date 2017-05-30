@@ -1,7 +1,7 @@
 //import required data
 import React, {Component} from 'react';
 import {createCookie, readCookie, eraseCookie} from './cookieCollection.js';
-// import Comments from './Comments';
+import PostsPanel from './postsPanel';
 import List from './displaylist';
 
 //posts component
@@ -40,38 +40,13 @@ class Posts extends Component{
     render()
     {
         return(
-            // !this.state.allposts ? <h1 dir="rtl">در حال بارگذاری ...</h1> :
-            <div className="row"> 
-                <div className="posts-panel">
+            <div className="row">   
                     <div className="col-md-4">
-                        <div className=" panel panel-default">
-                            <div className="panel-heading text-center">
-                                <h3 className="panel-title">
-                                     پربازدیدترین ها
-                                </h3>
-                            </div>
-                            <div dir="rtl" className="panel-body">
-                                <div className="col-md-12">
-                                    <List isPost={true} isComment={false} isMostVisited={true} data={this.state.mostvisitedposts}/>
-                                    </div>
-                            </div>
-                        </div>
+                        <PostsPanel title="پربازدیدترین ها" isPost={true} isComment={false} isMostVisited={true} data={this.state.mostvisitedposts} />
                     </div>
                     <div className="col-md-8 ">
-                        <div className="panel panel-default">
-                            <div className="panel-heading text-center">
-                                <h3 className="panel-title">
-                                 پست های کاربر
-                                </h3>
-                            </div>
-                        <div className="panel-body">
-                            <div dir="rtl" className="col-md-12">
-                                <List isPost={true} isComment={false} isMostVisited={false} data={this.state.allposts}/>
-                            </div>
-                            </div>
-                        </div>
+                        <PostsPanel title="پست های کاربر" isPost={true} isComment={false} isMostVisited={false} data={this.state.allposts} />
                     </div>
-                </div>   
             </div>
         )
     }
