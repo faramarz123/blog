@@ -9,7 +9,7 @@ class Posts extends Component{
     constructor(props)
     {
         super(props);
-        this.state = {allposts: [], mostvisitedposts: [] };
+        this.state = {allposts: null, mostvisitedposts: null };
     }
 
     componentDidMount() {
@@ -54,7 +54,7 @@ class Posts extends Component{
                             </div>
                             <div dir="rtl" className="panel-body">
                                 <div className="col-md-12">
-                                    <List data={this.state.mostvisitedposts}/>
+                                    <List isMostVisited={true} data={this.state.mostvisitedposts}/>
                                     </div>
                             </div>
                         </div>
@@ -68,7 +68,7 @@ class Posts extends Component{
                             </div>
                         <div className="panel-body">
                             <div dir="rtl" className="col-md-12">
-                                <List data={this.state.allposts}/>
+                                <List isMostVisited={false} data={this.state.allposts}/>
                             </div>
                             </div>
                         </div>
