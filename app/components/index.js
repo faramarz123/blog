@@ -22,7 +22,7 @@ class Index extends Component{
                         <div className="col-md-7 col-md-offset-2 text-center" style={{marginTop: 5,}}>
                             <h1>بلاگ</h1>
                         </div> 
-                        <button onClick={this.logout} className="btn">Logout</button>   
+                        {/*<button onClick={this.logout} className="btn">Logout</button>   */}
                     </nav>
                     <div className="container">
                         {this.props.children}

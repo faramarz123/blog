@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import {createCookie, readCookie, eraseCookie} from './cookieCollection.js';
 import Comments from './Comments';
-import Displayallposts from './displayposts';
+import List from './displaylist';
 
 //posts component
 class Posts extends Component{
@@ -42,7 +42,7 @@ class Posts extends Component{
     render()
     {
         return(
-            !this.state.allposts ? <h1 dir="rtl">در حال بارگذاری ...</h1> :
+            // !this.state.allposts ? <h1 dir="rtl">در حال بارگذاری ...</h1> :
             <div className="row"> 
                 <div className="posts-panel">
                     <div className="col-md-4">
@@ -54,7 +54,7 @@ class Posts extends Component{
                             </div>
                             <div dir="rtl" className="panel-body">
                                 <div className="col-md-12">
-                                    <Displayallposts isallormostvisited="mostvisitedposts" allposts={this.state.mostvisitedposts}/>
+                                    <List data={this.state.mostvisitedposts}/>
                                     </div>
                             </div>
                         </div>
@@ -68,7 +68,7 @@ class Posts extends Component{
                             </div>
                         <div className="panel-body">
                             <div dir="rtl" className="col-md-12">
-                                <Displayallposts isallormostvisited="allposts" allposts={this.state.allposts}/>
+                                <List data={this.state.allposts}/>
                             </div>
                             </div>
                         </div>

@@ -10,7 +10,7 @@ class PostsList extends Component
         // );
         let posts=[];
 
-        //render mostvisited posts
+        //Mostvisited posts
         if(this.props.isallormostvisit)
         {
             console.log('most visiteds')
@@ -19,8 +19,6 @@ class PostsList extends Component
             );
             
         }
-
-        //render allposts
         else if(this.props.isallormostvisit)
         {
              posts = this.props.posts.map(post =>
