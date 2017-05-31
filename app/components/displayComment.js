@@ -1,5 +1,10 @@
 import React,{Component} from 'react';
 import List from './displayList';
+import styles from '../displayComment.css'
+
+const divStyle = {
+  color: 'red',
+};
 
 class Comment extends Component
 {
@@ -18,7 +23,7 @@ class Comment extends Component
         //Show comment content
         return(
             !data ? <p></p> :
-            <div>
+            <div style={divStyle}>
                 <p>
                     {this.props.index}. {data}
                 </p>

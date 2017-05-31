@@ -3,6 +3,10 @@ import {createCookie, readCookie, eraseCookie} from '../cookieCollection.js';
 import List from './displayList';
 import Comment from './displayComment';
 
+const divStyle = {
+  color: 'blue',
+};
+
 
 class Post extends Component
 {
@@ -44,9 +48,9 @@ class Post extends Component
         //Show mostvisited posts
         if(isMostVisited)
             return(
-                <div>
+                <div >
                     <p>{data.title}</p><br />
-                    بازدید ها : <span>{data.visits}</span><hr />
+                    بازدید ها : <span style={divStyle}>{data.visits}</span><hr />
                 </div>
         )
 
