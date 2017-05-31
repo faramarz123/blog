@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import List from './displaylist';
+import List from './displayList';
 
 class Comment extends Component
 {

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {createCookie, readCookie, eraseCookie} from '../cookieCollection.js';
-import List from './displaylist';
-import Comment from './showcomment';
+import List from './displayList';
+import Comment from './displayComment';
 
 
 class Post extends Component

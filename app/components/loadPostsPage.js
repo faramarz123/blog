@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import {createCookie, readCookie, eraseCookie} from '../cookieCollection.js';
 import PostsPanel from './postsPanel';
-import List from './displaylist';
+import List from './displayList';
 import {getTop5Posts} from '../utils';
 
 //posts component

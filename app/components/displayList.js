@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Post from './showpost';
-import Comment from './showcomment';
+import Post from './displayPost';
+import Comment from './displayComment';
 
 class List extends Component
 {
