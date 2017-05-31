@@ -3,7 +3,7 @@ import List from './displayList';
 import styles from '../displayComment.css'
 
 const divStyle = {
-  color: 'red',
+  color: 'blue',
 };
 
 class Comment extends Component

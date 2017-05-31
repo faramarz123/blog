@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {createCookie, readCookie, eraseCookie} from '../cookieCollection.js';
 import List from './displayList';
 import Comment from './displayComment';
+import Error from './error';
 
 const divStyle = {
   color: 'blue',
@@ -14,12 +15,13 @@ class Post extends Component
     constructor(props)
     {
         super(props);
-        this.getComments = this.getComments.bind(this);
-        this.state = {comments: null};
+        this.state = {comments: null, getCommentsError: false};
+        // this.getComments = this.getComments.bind(this);
     }
     
     //button's event handler to get post's comments 
-     getComments(id)
+    //  getComments(id)
+    getComments(id)
     {
         if(!this.state.comments)
         {
@@ -38,7 +40,13 @@ class Post extends Component
                     this.setState({comments: ['کامنت وجود ندارد.']});
                 else
                     this.setState({comments: res[0].comments});
-            });
+            })
+            .catch(err => 
+            {
+                console.log('Error is : ',err);
+                this.setState({getCommentsError: true});
+                
+            })
         }
     }
     render()
@@ -62,7 +70,7 @@ class Post extends Component
                     <title>{data.title}</title><br />
                     <p>{data.content}</p>
                     <button className="btn" onClick={() => this.getComments(data.id)} >نظرات</button>
-                    <List isPost={false} isComment={true} isMostVisited={false} data={this.state.comments}/><hr />
+                    {!this.state.getCommentsError ? <div><List isPost={false} isComment={true} isMostVisited={false} data={this.state.comments}/><hr /></div> : <Error data="خطا در بارگیری نظرات." />}
                 </div>
             )
         }

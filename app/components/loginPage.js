@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { browserHistory } from 'react-router';
 import {createCookie, readCookie, eraseCookie} from '../cookieCollection.js';
+import Error from './error';
 
 //login component
 class Login extends Component
 {
         constructor(props) {
             super(props);
-            this.state = {token: '', usernamevalue: '', passwordvalue: ''};
+            this.state = {token: '', usernamevalue: '', passwordvalue: '', serverSideLoginError: false};
             this.handleSubmit = this.handleSubmit.bind(this);
             this.handleUsername = this.handleUsername.bind(this);
             this.handlePassword = this.handlePassword.bind(this);
@@ -28,7 +29,7 @@ class Login extends Component
         handleSubmit(event)
         {
             //http request to login. If succeed to login, then, redirect to posts 
-            fetch('https://ancient-bayou-43826.herokuapp.com/login', {
+            fetch('https://ancient-bayou-43826.herokuapp.com/loginn', {
             method: 'POST',
             body: JSON.stringify({
                 username: this.state.usernamevalue,
@@ -41,7 +42,11 @@ class Login extends Component
             .then(res => res.json())
             .then(res => createCookie('token', res.token, 1))
             .then(() => browserHistory.push('/Posts'))
-            .catch(console.warn)
+            .catch(err => {
+                console.log('Error is : ',err);
+                this.setState({serverSideLoginError: true});    
+            });
+
             event.preventDefault();
             
         }
@@ -49,20 +54,23 @@ class Login extends Component
         {
             //render login form
             return(
-                <form dir="rtl" onSubmit={this.handleSubmit}>
-                 <h2>ورود به سیستم</h2><br/>
-                 <label>
-                 نام کاربری:
-                 </label>   
-                        <input type="text" name="name"  onChange={this.handleUsername}/>
-                 <br />
-                 <label>
-                 رمز ورود:
-                 </label>
-                        <input type="password" name="password"  onChange={this.handlePassword} />
-                 
-                 <input type="submit" value="ورود"  />
-            </form>
+                
+                <div>
+                {!this.state.serverSideLoginError ?
+                    <form dir="rtl" onSubmit={this.handleSubmit}>
+                        <h2>ورود به سیستم</h2><br/>
+                        <label>
+                        نام کاربری:
+                        </label>   
+                                <input type="text" name="name"  onChange={this.handleUsername}/>
+                        <br />
+                        <label>
+                        رمز ورود:
+                        </label>
+                                <input type="password" name="password"  onChange={this.handlePassword} />
+                        <input type="submit" value="ورود"  />
+                    </form> : <div dir="rtl"><Error data="خطا در ورود به سیستم." /></div>}
+                </div>
         )
     }
 }

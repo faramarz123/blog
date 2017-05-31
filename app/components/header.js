@@ -8,11 +8,12 @@ class Header extends Component
     {
         super();
         this.state={shouldBeHidden: false}
-        this.logout = this.logout.bind(this);
+        // this.logout = this.logout.bind(this);
     }
 
     //logout button event handler
     logout(e)
+    // logout = (e) =>
     {
         e.preventDefault();
         eraseCookie('token');
